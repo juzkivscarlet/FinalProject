@@ -1,0 +1,25 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattjuskiw/FinalProject.git"
+  },
+  "author": "Matt Juskiw, Matt Kelly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattjuskiw/FinalProject/issues"
+  },
+  "homepage": "https://github.com/mattjuskiw/FinalProject#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.8.4",
+    "path": "^0.12.7"
+  }
+}
