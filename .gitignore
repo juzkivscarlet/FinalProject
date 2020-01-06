@@ -1,5 +1,6 @@
 node_modules/
 package-lock.json
 req.png
+.env
 
 client/react-readme.md
