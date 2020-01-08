@@ -1,8 +1,15 @@
 import React from 'react';
 
+import Container from './components/Container';
+import Navbar from './components/Navbar';
+import SignupModal from './components/SignupModal';
+import Wrapper from './components/Wrapper';
+
 function App() {
 	return (
-		<h2>Hello world!</h2>
+		<Wrapper>
+			<Navbar />
+		</Wrapper>
 	);
 }
 
