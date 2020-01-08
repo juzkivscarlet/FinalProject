@@ -4,3 +4,4 @@ req.png
 .env
 
 client/react-readme.md
+client/.env
