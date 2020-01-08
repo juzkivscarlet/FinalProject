@@ -4,19 +4,21 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattjuskiw/FinalProject.git"
-  },
-  "author": "Matt Juskiw, Matt Kelly",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mattjuskiw/FinalProject/issues"
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
   },
-  "homepage": "https://github.com/mattjuskiw/FinalProject#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -24,6 +26,7 @@
     "express-session": "^1.17.0",
     "express-validator": "^6.3.1",
     "mongoose": "^5.8.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "if-env": "^1.0.4"
   }
 }
