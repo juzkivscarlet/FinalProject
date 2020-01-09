@@ -3,7 +3,7 @@ import './style.css';
 
 function Dropdown(props) {
 	return (
-		<div className='btn-group'>
+		<div className='btn-group dropleft'>
 			<button type='button' className='btn btn-outline-secondary btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
 				{props.type} Portal
 			</button>
