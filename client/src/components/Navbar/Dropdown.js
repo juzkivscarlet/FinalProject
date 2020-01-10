@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './style.css';
 
 function Dropdown(props) {
@@ -13,11 +14,11 @@ function Dropdown(props) {
                         <h5>{props.type} Login</h5>
                     </div>
 					<div className='form-group'>
-						<label for='username'>Username</label>
+						<label htmlFor='username'>Username</label>
 						<input type='username' className='form-control' id='username' placeholder='Username' />
 					</div>
 					<div className='form-group'>
-						<label for='password'>Password</label>
+						<label htmlFor='password'>Password</label>
 						<input type='password' className='form-control' id='password' placeholder='password' />
 					</div>
 					<div className='form-group'>
@@ -25,7 +26,10 @@ function Dropdown(props) {
 					</div>
 				</form>
 				<div className='dropdown-divider' />
-				<a className='dropdown-item' href='/'>Sign up for {props.type} account</a>
+				<Link to='/signup' className='dropdown-item' data-toggle='modal' data-target='#signup-modal'>
+					Sign up for {props.type} account
+				</Link>
+				{/* <a className='dropdown-item' href='/'>Sign up for {props.type} account</a> */}
 			</div>
 		</div>
 	);

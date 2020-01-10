@@ -17,6 +17,7 @@ function App() {
 				<Jumbotron />
 				<Container>
 					<Route exact path='/about' component={About} />
+					<Route exact path='/signup' component={SignupModal} />
 				</Container>
 			</Router>
 		</Wrapper>
