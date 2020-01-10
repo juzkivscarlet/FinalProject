@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './style.css';
+import SignupModal from '../SignupModal';
 
 function Dropdown(props) {
 	return (
@@ -26,9 +27,7 @@ function Dropdown(props) {
 					</div>
 				</form>
 				<div className='dropdown-divider' />
-				<Link to='/signup' className='dropdown-item' data-toggle='modal' data-target='#signup-modal'>
-					Sign up for {props.type} account
-				</Link>
+				<SignupModal className='dropdown-item' type={props.type} />
 				{/* <a className='dropdown-item' href='/'>Sign up for {props.type} account</a> */}
 			</div>
 		</div>

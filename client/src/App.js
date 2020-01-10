@@ -18,7 +18,6 @@ function App() {
 				<Container>
 					<Route exact path='/signup' component={SignupModal} />
 					<Route exact path='/about' component={About} />
-					<SignupModal />
 				</Container>
 			</Router>
 		</Wrapper>
