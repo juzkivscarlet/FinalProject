@@ -1,13 +1,14 @@
 const path = require('path');
-const router = require('express').Router();
+const express = require('express');
+const app = express();
+require('../config/middleware/isAuthenticated');
 
-// API Routes
-// const apiRoutes = require('./api');
-// router.use('/api', apiRoutes);
+const apiRoutes = require('./apiRoutes');
 
-// send React app if API routes aren't hit
-router.use((req,res) => {
-	res.sendFile(path.join(__dirname,'../client/index.html'));
+app.use('/api', apiRoutes);
+
+app.use((req,res) => {
+	res.sendFile(path.join(__dirname,'../client/build/index.html'));
 });
 
-module.exports = router;
+module.exports = app;

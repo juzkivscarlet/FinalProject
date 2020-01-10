@@ -21,11 +21,7 @@ app.use(session({secret:'doog', saveUninitialized:false, resave:false}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req,res) => {
-	res.sendFile(path.join(__dirname,'./client/build/index.html'));
-});
-
-db.sequelize.sync({force:true}).then(() => {
+db.sequelize.sync().then(() => {
 	app.listen(PORT, () => {
 		console.log(`Live on localhost:${PORT}`);
 	});

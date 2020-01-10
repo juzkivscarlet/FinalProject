@@ -1,4 +1,7 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import About from './components/pages/About';
 
 import Container from './components/Container';
 import Navbar from './components/Navbar';
@@ -9,8 +12,13 @@ import Jumbotron from './components/Jumbotron';
 function App() {
 	return (
 		<Wrapper>
-			<Navbar />
-			<Jumbotron />
+			<Router>
+				<Navbar />
+				<Jumbotron />
+				<Container>
+					<Route exact path='/about' component={About} />
+				</Container>
+			</Router>
 		</Wrapper>
 	);
 }
