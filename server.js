@@ -25,6 +25,8 @@ app.get('/', (req,res) => {
 	res.sendFile(path.join(__dirname,'./client/build/index.html'));
 });
 
-app.listen(PORT, () => {
-	console.log(`Live on localhost:${PORT}`);
+db.sequelize.sync({force:true}).then(() => {
+	app.listen(PORT, () => {
+		console.log(`Live on localhost:${PORT}`);
+	});
 });
