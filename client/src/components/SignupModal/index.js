@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import './style.css';
 
 function SignupModal(props) {
 	return (
-		<div className='modal' tabIndex='-1' role='dialog' aria-hidden='true' id='signup-modal'>
+		<div className='modal fade' role='dialog' aria-hidden='true' id='signup-modal'>
 			<div className='modal-dialog' role='document'>
 				<div className='modal-content'>
 
