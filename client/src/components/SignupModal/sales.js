@@ -1,5 +1,6 @@
 import React from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
+import axios from 'axios';
 
 function SalesForm(props) {
    
@@ -39,17 +40,33 @@ function SalesForm(props) {
 	};
 
 	const signUpUser = (firstName, lastName, userName, email, password) => {
-		return new Promise(function(resolve, reject){
-			var xhr = new XMLHttpRequest();
-			xhr.open("POST", '/api/signup', true);
-			xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.send(JSON.stringify({
-				firstName: firstName,
-				lastName: lastName,
-				userName: userName,
-				email: email,
-				password: password,
-			}));
+
+		axios.post('/api/signup', function(req, res){
+			// db.salesUsers.create({
+			// 	firstName: firstName,
+			// 	lastName: lastName,
+			// 	userName: userName,
+			// 	email: email,
+			// 	password: password
+			//   })
+			//   .then(function () {
+			// 	// res.redirect(307, "/api/login");
+			//   })
+			//   .catch(function (err) {
+			// 	res.status(401).json(err);
+			//   });
+		});
+		// return new Promise(function(resolve, reject){
+		// 	var xhr = new XMLHttpRequest();
+		// 	xhr.open("POST", '/api/signup', true);
+		// 	xhr.setRequestHeader('Content-Type', 'application/json');
+		// 	xhr.send(JSON.stringify({
+		// 		firstName: firstName,
+		// 		lastName: lastName,
+		// 		userName: userName,
+		// 		email: email,
+		// 		password: password
+		// 	}));
 			// .then(function (data) {
 			// //   window.location.replace("/");
 			// })
@@ -58,7 +75,7 @@ function SalesForm(props) {
 			//   console.log(err);
 			//   return resolve();
 			// });
-		});
+		// });
 	};
 	
 	return (
