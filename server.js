@@ -22,7 +22,7 @@ app.use(session({secret:'dog', saveUninitialized:false, resave:false}));
 app.use(passport.initialize());
 app.use(passport.session())
 
-db.sequelize.sync({force:true}).then(() => {
+db.sequelize.sync().then(() => {
 	app.listen(PORT, () => {
 		console.log(`Live on localhost:${PORT}`);
 	});
