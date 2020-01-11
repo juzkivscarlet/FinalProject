@@ -23,39 +23,9 @@ class SalesForm extends Component {
 		});
 	};
 
-	signUpForm = event => {
+	signUpUser = event => {
 		event.preventDefault();
 
-		// var userData = {
-		// 	firstName: this.state.firstName,
-		// 	lastName: this.state.lastName,
-		// 	userName: this.state.userName,
-		// 	email: this.state.email,
-		// 	password: this.state.password,
-	  	// };
-
-		// console.log(userData);
-		this.signUpUser();
-		  
-		// // Clearing out the signup form's fields
-		// firstNameInput.value = "";
-		// lastNameInput.value = "";
-		// usernameInput.value = "";
-		// emailInput.value = "";
-		// passwordInput.value = "";
-	};
-
-	// const stripTags = (data) =>{
-	// 	// var newData = data.replace(/</g, "&lt;");
-	// 	// return newData;
-	// 	return data;
-	// };
-
-	signUpUser = () => {
-
-		// axios.post('/test/apisignup').then(res => console.log(res));
-		
-		
 		API.signUp({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
@@ -131,7 +101,7 @@ class SalesForm extends Component {
 							onChange={this.handleInputChange} />
 					</Form.Group>
 
-					<Button onClick={this.signUpForm} variant="primary" type="submit" id="salesSubmit">
+					<Button onClick={this.signUpUser} variant="primary" type="submit" id="salesSubmit">
 						Submit
 					</Button>
 				</Form>
