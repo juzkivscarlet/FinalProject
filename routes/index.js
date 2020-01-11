@@ -1,4 +1,5 @@
 const path = require('path');
+const passport = require('../config/passport');
 const express = require('express');
 const router = express();
 // const apiRoutes = require('./apiRoutes');
@@ -37,6 +38,10 @@ router.post('/sales/signup', (req, res) => {
 	});
 });
 
+router.post('/sales/login', passport.authenticate('local'), (req,res) => {
+	res.json(req.user);
+});
+
 router.post('/business/signup', (req,res) => {
 	db.BusinessUsers.create({
 		businessName: req.body.businessName,
@@ -49,6 +54,10 @@ router.post('/business/signup', (req,res) => {
 		console.log(err);
 		res.status(401).json();
 	});
+});
+
+router.post('/business/login', passport.authenticate('local'), (res,res) => {
+	res.json(req.user);
 });
 
 module.exports = router;

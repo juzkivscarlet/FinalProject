@@ -23,15 +23,6 @@ function SignupModal(props) {
 				</Modal.Header>
 
 				{props.type==='Business' ? <BusinessForm /> : <SalesForm />}
-
-				<Modal.Footer>
-					<Button variant='secondary' onClick={handleClose}>
-						close
-					</Button>
-					<Button variant='primary' onClick={handleClose}>
-						Close but blue
-					</Button>
-				</Modal.Footer>
 			</Modal>
 		</div>
 	);

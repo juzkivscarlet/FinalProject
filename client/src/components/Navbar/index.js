@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Dropdown from './Dropdown';
+import { ButtonGroup } from 'react-bootstrap';
+import Login from './Login';
 import './style.css';
 
 function Navbar(props) {
@@ -20,8 +21,10 @@ function Navbar(props) {
 					</li>
 				</ul>
 				<div className='my-2 my-lg-0'>
-					<Dropdown type='Business' />
-					<Dropdown type='Sales' />
+					<ButtonGroup>
+						<Login type='Business' />
+						<Login type='Sales' />
+					</ButtonGroup>
 				</div>
 			</div>
 		</nav>

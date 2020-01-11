@@ -33,7 +33,7 @@ class BusinessForm extends Component {
 	render() {
 		return (
 			<Modal.Body>
-				<h2>Create Business Account</h2>
+				<h2>Business Form</h2>
 
 				<Form>
 					<Form.Group>
