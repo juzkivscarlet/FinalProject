@@ -27,12 +27,13 @@ router.post('/api/signup', (req, res) => {
 	db.SalesUsers.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
-		userName: req.body.lastNameuserName,
-		email: req.body.lastNameemail,
-		password: req.body.lastNamepassword,
+		username: req.body.userName,
+		email: req.body.email,
+		password: req.body.password,
 	})
-	.then(function () {
+	.then(function (data) {
 		// res.redirect(307, "/api/login");
+		res.json({data:data});
 	})
 	.catch(function (err) {
 		console.log(err);

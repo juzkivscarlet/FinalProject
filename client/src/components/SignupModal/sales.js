@@ -26,13 +26,13 @@ class SalesForm extends Component {
 	signUpForm = event => {
 		event.preventDefault();
 
-		var userData = {
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			userName: this.state.userName,
-			email: this.state.email,
-			password: this.state.password,
-	  	};
+		// var userData = {
+		// 	firstName: this.state.firstName,
+		// 	lastName: this.state.lastName,
+		// 	userName: this.state.userName,
+		// 	email: this.state.email,
+		// 	password: this.state.password,
+	  	// };
 
 		// console.log(userData);
 		this.signUpUser();
@@ -51,10 +51,10 @@ class SalesForm extends Component {
 	// 	return data;
 	// };
 
-	signUpUser = (data) => {
+	signUpUser = () => {
 
 		// axios.post('/test/apisignup').then(res => console.log(res));
-
+		
 		
 		API.signUp({
 			firstName: this.state.firstName,
@@ -68,7 +68,6 @@ class SalesForm extends Component {
 			console.log(res);
 		})
 		.catch(function(err) {
-			console.log(this.state);
 			console.log(err);
 		});
 	};
