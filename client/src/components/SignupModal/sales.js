@@ -6,76 +6,58 @@ function SalesForm(props) {
    
 	// When the signup button is clicked, we validate the email and password are not blank
 	const signUpForm = event => {
-	  event.preventDefault();
+		event.preventDefault();
 
-	  // Getting references to our form and input
-	  var firstNameInput = document.getElementById('salesFirstName');
-	  var lastNameInput = document.getElementById('salesLastName');
-	  var usernameInput = document.getElementById('salesUsername');
-	  var emailInput = document.getElementById('salesEmail');
-	  var passwordInput = document.getElementById('salesPassword');
+		// Getting references to our form and input
+		var firstNameInput = document.getElementById('salesFirstName');
+		var lastNameInput = document.getElementById('salesLastName');
+		var usernameInput = document.getElementById('salesUsername');
+		var emailInput = document.getElementById('salesEmail');
+		var passwordInput = document.getElementById('salesPassword');
 
-      var userData = {
-        firstName: stripTags(firstNameInput.value),
-        lastName: stripTags(lastNameInput.value),
-        userName: stripTags(usernameInput.value),
-        email: stripTags(emailInput.value),
-        password: stripTags(passwordInput.value),
-	  }
-	  
-	  // Clearing out the signup form's fields
-      firstNameInput.value = "";
-      lastNameInput.value = "";
-      usernameInput.value = "";
-      emailInput.value = "";
-      passwordInput.value = "";
-      
-      console.log(userData);
-      signUpUser(userData.firstName, userData.lastName, userData.userName, userData.email, userData.password);
+		var userData = {
+			firstName: firstNameInput.value,
+			lastName: lastNameInput.value,
+			userName: usernameInput.value,
+			email: emailInput.value,
+			password: passwordInput.value,
+	  	};
+
+		console.log(userData);
+		signUpUser(userData.firstName, userData.lastName, userData.userName, userData.email, userData.password);
+		  
+		// Clearing out the signup form's fields
+		firstNameInput.value = "";
+		lastNameInput.value = "";
+		usernameInput.value = "";
+		emailInput.value = "";
+		passwordInput.value = "";
 	};
   
-    const stripTags = (data) =>{
-      var newData = data.replace(/</g, "&lt;");
-      return newData;
-	};
+	// const stripTags = (data) =>{
+	// 	// var newData = data.replace(/</g, "&lt;");
+	// 	// return newData;
+	// 	return data;
+	// };
 
 	const signUpUser = (firstName, lastName, userName, email, password) => {
 
-		axios.post('/api/signup', function(req, res){
-			// db.salesUsers.create({
-			// 	firstName: firstName,
-			// 	lastName: lastName,
-			// 	userName: userName,
-			// 	email: email,
-			// 	password: password
-			//   })
-			//   .then(function () {
-			// 	// res.redirect(307, "/api/login");
-			//   })
-			//   .catch(function (err) {
-			// 	res.status(401).json(err);
-			//   });
+		// axios.get('/test').then(res => console.log(res));
+
+		axios.post('/api/signup', {
+			firstName: firstName,
+			lastName: lastName,
+			userName: userName,
+			email: email,
+			password: password
+		})
+		.then(function (res) {
+			// res.redirect(307, "/api/login");
+			console.log(res);
+		})
+		.catch(function (err) {
+			console.log(err);
 		});
-		// return new Promise(function(resolve, reject){
-		// 	var xhr = new XMLHttpRequest();
-		// 	xhr.open("POST", '/api/signup', true);
-		// 	xhr.setRequestHeader('Content-Type', 'application/json');
-		// 	xhr.send(JSON.stringify({
-		// 		firstName: firstName,
-		// 		lastName: lastName,
-		// 		userName: userName,
-		// 		email: email,
-		// 		password: password
-		// 	}));
-			// .then(function (data) {
-			// //   window.location.replace("/");
-			// })
-			// // If there's an error, log it to the console
-			// .catch(function(err){
-			//   console.log(err);
-			//   return resolve();
-			// });
-		// });
 	};
 	
 	return (
@@ -83,37 +65,37 @@ function SalesForm(props) {
 			<h2>Sales Form</h2>
 			<Form>
 
-			<Form.Group controlId="salesFirstName">
-				<Form.Label>First Name</Form.Label>
-				<Form.Control type="text" placeholder="First Name" />
-			</Form.Group>
+				<Form.Group id="salesFirstName">
+					<Form.Label>First Name</Form.Label>
+					<Form.Control type="text" placeholder="First Name" />
+				</Form.Group>
 
-			<Form.Group controlId="salesLastName">
-				<Form.Label>Last Name</Form.Label>
-				<Form.Control type="text" placeholder="Last Name" />
-			</Form.Group>
+				<Form.Group id="salesLastName">
+					<Form.Label>Last Name</Form.Label>
+					<Form.Control type="text" placeholder="Last Name" />
+				</Form.Group>
 
-			<Form.Group controlId="salesUsername">
-				<Form.Label>User Name</Form.Label>
-				<Form.Control type="text" placeholder="Username" />
-			</Form.Group>
+				<Form.Group id="salesUsername">
+					<Form.Label>User Name</Form.Label>
+					<Form.Control type="text" placeholder="Username" />
+				</Form.Group>
 
-			<Form.Group controlId="salesEmail">
-				<Form.Label>Email address</Form.Label>
-				<Form.Control type="email" placeholder="Enter email" />
-				<Form.Text className="text-muted">
-				We'll never share your email with anyone else.
-				</Form.Text>
-			</Form.Group>
+				<Form.Group id="salesEmail">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control type="email" placeholder="Enter email" />
+					<Form.Text className="text-muted">
+					We'll never share your email with anyone else.
+					</Form.Text>
+				</Form.Group>
 
-			<Form.Group controlId="salesPassword">
-				<Form.Label>Password</Form.Label>
-				<Form.Control type="password" placeholder="Password" />
-			</Form.Group>
+				<Form.Group id="salesPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control type="password" placeholder="Password" />
+				</Form.Group>
 
-			<Button onClick={signUpForm} variant="primary" type="submit" controlId="salesSubmit">
-				Submit
-			</Button>
+				<Button onClick={signUpForm} variant="primary" type="submit" id="salesSubmit">
+					Submit
+				</Button>
 			</Form>
 		</Modal.Body>
 		

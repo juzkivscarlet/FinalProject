@@ -1,15 +1,41 @@
 const path = require('path');
-const express = require('express');
-const app = express();
-require('../config/middleware/isAuthenticated');
+const router = require('express').Router();
+// const apiRoutes = require('./apiRoutes');
 
-const apiRoutes = require('./apiRoutes');
+const db = require('../models');
 
-app.use('/api', apiRoutes);
-app.use('/api/signup', apiRoutes);
+// router.use('/api', apiRoutes);
 
-app.use((req,res) => {
+router.route('/test').get((req,res) => {
+	res.json({test: 'hello world'});
+});
+
+router.use((req,res) => {
 	res.sendFile(path.join(__dirname,'../client/build/index.html'));
 });
 
-module.exports = app;
+router.route('/api').get((req,res) => {
+	db.SalesUsers.findAll({}).then(data => {
+		res.json({data:data});
+	}).catch(err => {
+		res.status(401).json(err);
+	});
+});
+
+router.route('/api/signup').post((req, res) => {
+	db.SalesUsers.create({
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		userName: req.body.lastNameuserName,
+		email: req.body.lastNameemail,
+		password: req.body.lastNamepassword,
+	})
+	.then(function () {
+		// res.redirect(307, "/api/login");
+	})
+	.catch(function (err) {
+		res.status(401).json(err);
+	});
+});
+
+module.exports = router;
