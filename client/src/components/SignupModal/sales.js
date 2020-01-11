@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
 import API from '../../utils/API';
-import axios from 'axios';
 
 class SalesForm extends Component {
 	state = {
@@ -12,9 +11,7 @@ class SalesForm extends Component {
 		password: ''
 	};
 
-	componentDidMount() {
-
-	}
+	// componentDidMount() {}
 
 	handleInputChange = event => {
 		const { name, value } = event.target;
@@ -26,7 +23,7 @@ class SalesForm extends Component {
 	signUpUser = event => {
 		event.preventDefault();
 
-		API.signUp({
+		API.signUpSales({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
 			userName: this.state.userName,

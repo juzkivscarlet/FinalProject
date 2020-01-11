@@ -7,10 +7,6 @@ const db = require('../models');
 
 // router.use('/api', apiRoutes);
 
-router.get('/test', (req,res) => {
-	res.json({test: 'hello world'});
-});
-
 // router.use((req,res) => {
 // 	res.sendFile(path.join(__dirname,'../client/build/index.html'));
 // });
@@ -23,7 +19,7 @@ router.get('/api', (req,res) => {
 	});
 });
 
-router.post('/api/signup', (req, res) => {
+router.post('/sales/signup', (req, res) => {
 	db.SalesUsers.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
@@ -36,6 +32,20 @@ router.post('/api/signup', (req, res) => {
 		res.json({data:data});
 	})
 	.catch(function (err) {
+		console.log(err);
+		res.status(401).json();
+	});
+});
+
+router.post('/business/signup', (req,res) => {
+	db.BusinessUsers.create({
+		businessName: req.body.businessName,
+		industry: req.body.industry,
+		username: req.body.username,
+		password: req.body.password
+	}).then(data => {
+		res.json({data:data});
+	}).catch(err => {
 		console.log(err);
 		res.status(401).json();
 	});
