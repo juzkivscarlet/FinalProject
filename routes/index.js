@@ -1,20 +1,21 @@
 const path = require('path');
-const router = require('express').Router();
+const express = require('express');
+const router = express();
 // const apiRoutes = require('./apiRoutes');
 
 const db = require('../models');
 
 // router.use('/api', apiRoutes);
 
-router.route('/test').get((req,res) => {
+router.get('/test', (req,res) => {
 	res.json({test: 'hello world'});
 });
 
-router.use((req,res) => {
-	res.sendFile(path.join(__dirname,'../client/build/index.html'));
-});
+// router.use((req,res) => {
+// 	res.sendFile(path.join(__dirname,'../client/build/index.html'));
+// });
 
-router.route('/api').get((req,res) => {
+router.get('/api', (req,res) => {
 	db.SalesUsers.findAll({}).then(data => {
 		res.json({data:data});
 	}).catch(err => {
@@ -22,7 +23,7 @@ router.route('/api').get((req,res) => {
 	});
 });
 
-router.route('/api/signup').post((req, res) => {
+router.post('/api/signup', (req, res) => {
 	db.SalesUsers.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
@@ -34,7 +35,8 @@ router.route('/api/signup').post((req, res) => {
 		// res.redirect(307, "/api/login");
 	})
 	.catch(function (err) {
-		res.status(401).json(err);
+		console.log(err);
+		res.status(401).json();
 	});
 });
 

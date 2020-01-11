@@ -1,106 +1,144 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
+import API from '../../utils/API';
 import axios from 'axios';
 
-function SalesForm(props) {
-   
-	// When the signup button is clicked, we validate the email and password are not blank
-	const signUpForm = event => {
+class SalesForm extends Component {
+	state = {
+		firstName: '',
+		lastName: '',
+		userName: '',
+		email: '',
+		password: ''
+	};
+
+	componentDidMount() {
+
+	}
+
+	handleInputChange = event => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value
+		});
+	};
+
+	signUpForm = event => {
 		event.preventDefault();
 
-		// Getting references to our form and input
-		var firstNameInput = document.getElementById('salesFirstName');
-		var lastNameInput = document.getElementById('salesLastName');
-		var usernameInput = document.getElementById('salesUsername');
-		var emailInput = document.getElementById('salesEmail');
-		var passwordInput = document.getElementById('salesPassword');
-
 		var userData = {
-			firstName: firstNameInput.value,
-			lastName: lastNameInput.value,
-			userName: usernameInput.value,
-			email: emailInput.value,
-			password: passwordInput.value,
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			userName: this.state.userName,
+			email: this.state.email,
+			password: this.state.password,
 	  	};
 
-		console.log(userData);
-		signUpUser(userData.firstName, userData.lastName, userData.userName, userData.email, userData.password);
+		// console.log(userData);
+		this.signUpUser();
 		  
-		// Clearing out the signup form's fields
-		firstNameInput.value = "";
-		lastNameInput.value = "";
-		usernameInput.value = "";
-		emailInput.value = "";
-		passwordInput.value = "";
+		// // Clearing out the signup form's fields
+		// firstNameInput.value = "";
+		// lastNameInput.value = "";
+		// usernameInput.value = "";
+		// emailInput.value = "";
+		// passwordInput.value = "";
 	};
-  
+
 	// const stripTags = (data) =>{
 	// 	// var newData = data.replace(/</g, "&lt;");
 	// 	// return newData;
 	// 	return data;
 	// };
 
-	const signUpUser = (firstName, lastName, userName, email, password) => {
+	signUpUser = (data) => {
 
-		// axios.get('/test').then(res => console.log(res));
+		// axios.post('/test/apisignup').then(res => console.log(res));
 
-		axios.post('/api/signup', {
-			firstName: firstName,
-			lastName: lastName,
-			userName: userName,
-			email: email,
-			password: password
+		
+		API.signUp({
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			userName: this.state.userName,
+			email: this.state.email,
+			password: this.state.password
 		})
-		.then(function (res) {
+		.then(function(res) {
 			// res.redirect(307, "/api/login");
 			console.log(res);
 		})
-		.catch(function (err) {
+		.catch(function(err) {
+			console.log(this.state);
 			console.log(err);
 		});
 	};
-	
-	return (
-		<Modal.Body>
-			<h2>Sales Form</h2>
-			<Form>
 
-				<Form.Group id="salesFirstName">
-					<Form.Label>First Name</Form.Label>
-					<Form.Control type="text" placeholder="First Name" />
-				</Form.Group>
+	render() {
+		return (
+			<Modal.Body>
+				<h2>Sales Form</h2>
+				<Form>
 
-				<Form.Group id="salesLastName">
-					<Form.Label>Last Name</Form.Label>
-					<Form.Control type="text" placeholder="Last Name" />
-				</Form.Group>
+					<Form.Group id="salesFirstName">
+						<Form.Label>First Name</Form.Label>
+						<Form.Control 
+							type="text" 
+							placeholder="First Name" 
+							name='firstName'
+							value={this.state.firstName} 
+							onChange={this.handleInputChange} />
+					</Form.Group>
 
-				<Form.Group id="salesUsername">
-					<Form.Label>User Name</Form.Label>
-					<Form.Control type="text" placeholder="Username" />
-				</Form.Group>
+					<Form.Group id="salesLastName">
+						<Form.Label>Last Name</Form.Label>
+						<Form.Control 
+							type="text" 
+							placeholder="Last Name"
+							name='lastName'
+							value={this.state.lastName}
+							onChange={this.handleInputChange} />
+					</Form.Group>
 
-				<Form.Group id="salesEmail">
-					<Form.Label>Email address</Form.Label>
-					<Form.Control type="email" placeholder="Enter email" />
-					<Form.Text className="text-muted">
-					We'll never share your email with anyone else.
-					</Form.Text>
-				</Form.Group>
+					<Form.Group id="salesUsername">
+						<Form.Label>User Name</Form.Label>
+						<Form.Control 
+							type="text" 
+							placeholder="Username"
+							name='userName'
+							value={this.state.userName}
+							onChange={this.handleInputChange} />
+					</Form.Group>
 
-				<Form.Group id="salesPassword">
-					<Form.Label>Password</Form.Label>
-					<Form.Control type="password" placeholder="Password" />
-				</Form.Group>
+					<Form.Group id="salesEmail">
+						<Form.Label>Email address</Form.Label>
+						<Form.Control 
+							type="email" 
+							placeholder="Enter email"
+							name='email'
+							value={this.state.email}
+							onChange={this.handleInputChange} />
+						<Form.Text className="text-muted">
+						We'll never share your email with anyone else.
+						</Form.Text>
+					</Form.Group>
 
-				<Button onClick={signUpForm} variant="primary" type="submit" id="salesSubmit">
-					Submit
-				</Button>
-			</Form>
-		</Modal.Body>
-		
+					<Form.Group id="salesPassword">
+						<Form.Label>Password</Form.Label>
+						<Form.Control 
+							type="password" 
+							placeholder="Password"
+							name='password'
+							value={this.state.password}
+							onChange={this.handleInputChange} />
+					</Form.Group>
 
-	);
+					<Button onClick={this.signUpForm} variant="primary" type="submit" id="salesSubmit">
+						Submit
+					</Button>
+				</Form>
+			</Modal.Body>
+		);
+	}
 }
 
 export default SalesForm;
