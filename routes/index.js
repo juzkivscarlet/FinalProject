@@ -12,6 +12,11 @@ const db = require('../models');
 // 	res.sendFile(path.join(__dirname,'../client/build/index.html'));
 // });
 
+// fix favicon.ico search routing issue
+router.get('/favicon.ico', (req,res) => {
+	res.status(204);
+});
+
 router.get('/api', (req,res) => {
 	db.SalesUsers.findAll({}).then(data => {
 		res.json({data:data});
