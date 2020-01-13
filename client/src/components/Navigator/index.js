@@ -1,33 +1,33 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { ButtonGroup, Navbar } from 'react-bootstrap';
+import { ButtonGroup, Nav, Navbar } from 'react-bootstrap';
 import Login from './Login';
 import './style.css';
 
 function Navigator(props) {
 	return (
-		<nav className='navbar navbar-expand-md navbar-light bg-light'>
-			<a className='navbar-brand' href='/'>Sell Out!</a>
-			<button type='button' className='navbar-toggler' data-toggle='collapse' data-target='#navContent' aria-controls='navContent' aria-expanded='false' aria-label='Toggle Nav'>
-				<span className='navbar-toggler-icon' />
-			</button>
+		<Navbar bg='light' expand='md'>
+			<Navbar.Brand href='/'>Sell Out!</Navbar.Brand>
+			<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 
-			<div className='collapse navbar-collapse' id='navContent'>
-				<ul className='navbar-nav ml-auto'>
-					<li className='nav-item'>
+			<Navbar.Collapse id='navContent'>
+				<Nav className='ml-auto'>
+					<Nav.Link>
 						<Link to='/about' className={window.location.pathname==='/about' ? 'nav-link active' : 'nav-link'}>
 							About
 						</Link>
-					</li>
-				</ul>
+					</Nav.Link>
+				</Nav>
+
 				<div className='my-2 my-lg-0'>
 					<ButtonGroup>
 						<Login type='Business' />
 						<Login type='Sales' />
 					</ButtonGroup>
 				</div>
-			</div>
-		</nav>
+			</Navbar.Collapse>
+
+		</Navbar>
 	);
 }
 
