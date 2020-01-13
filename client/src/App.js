@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import About from './components/pages/About';
 
 import Container from './components/Container';
-import Navbar from './components/Navbar';
+import Navigator from './components/Navigator';
 import SignupModal from './components/SignupModal';
 import Wrapper from './components/Wrapper';
 import Header from './components/Header';
@@ -13,7 +13,7 @@ function App() {
 	return (
 		<Wrapper>
 			<Router>
-				<Navbar />
+				<Navigator />
 				<Header />
 				<Container>
 					<Route exact path='/signup' component={SignupModal} />

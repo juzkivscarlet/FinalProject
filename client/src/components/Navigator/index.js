@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import { ButtonGroup } from 'react-bootstrap';
+import { ButtonGroup, Navbar } from 'react-bootstrap';
 import Login from './Login';
 import './style.css';
 
-function Navbar(props) {
+function Navigator(props) {
 	return (
 		<nav className='navbar navbar-expand-md navbar-light bg-light'>
 			<a className='navbar-brand' href='/'>Sell Out!</a>
@@ -31,4 +31,4 @@ function Navbar(props) {
 	);
 }
 
-export default Navbar;
+export default Navigator;
