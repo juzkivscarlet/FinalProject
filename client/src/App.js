@@ -7,14 +7,14 @@ import Container from './components/Container';
 import Navbar from './components/Navbar';
 import SignupModal from './components/SignupModal';
 import Wrapper from './components/Wrapper';
-import Jumbotron from './components/Jumbotron';
+import Header from './components/Header';
 
 function App() {
 	return (
 		<Wrapper>
 			<Router>
 				<Navbar />
-				<Jumbotron />
+				<Header />
 				<Container>
 					<Route exact path='/signup' component={SignupModal} />
 					<Route exact path='/about' component={About} />

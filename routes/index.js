@@ -56,7 +56,7 @@ router.post('/business/signup', (req,res) => {
 	});
 });
 
-router.post('/business/login', passport.authenticate('local'), (res,res) => {
+router.post('/business/login', passport.authenticate('local'), (req,res) => {
 	res.json(req.user);
 });
 
