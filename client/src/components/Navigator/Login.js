@@ -21,10 +21,22 @@ class Login extends Component {
 	loginUser = e => {
 		e.preventDefault();
 		
-		API.loginSales({
-			username: this.state.username,
-			password: this.state.password
-		}).then(res => console.log(res)).catch(err => console.log(err));
+		if(this.props.type === 'Sales'){
+			API.loginSales({
+				username: this.state.username,
+				password: this.state.password
+			}).then(res => console.log(res)).catch(err => console.log(err));
+			
+			API.loggedInSales();
+		}
+		else{
+			API.loginBusiness({
+				username: this.state.username,
+				password: this.state.password
+			}).then(res => console.log(res)).catch(err => console.log(err));
+
+			API.loggedInBusiness();
+		}
 	};
 
 	render() {

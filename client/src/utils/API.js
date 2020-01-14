@@ -12,5 +12,11 @@ export default {
 	},
 	loginBusiness: function(data) {
 		return axios.post('/business/login', data);
-	}
+	},
+	loggedInSales: function(data) {
+		return axios.get('/api/sales/user_data', data);
+	},
+	loggedInBusiness: function(data) {
+		return axios.get('/api/business/user_data', data);
+	},
 };

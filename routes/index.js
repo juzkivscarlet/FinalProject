@@ -17,13 +17,65 @@ router.get('/favicon.ico', (req,res) => {
 	res.status(204);
 });
 
-router.get('/api', (req,res) => {
+router.get('/api/sales', (req,res) => {
 	db.SalesUsers.findAll({}).then(data => {
 		res.json({data:data});
 	}).catch(err => {
 		res.status(401).json(err);
 	});
 });
+
+router.get('/api/business', (req,res) => {
+	db.BusinessUsers.findAll({}).then(data => {
+		res.json({data:data});
+	}).catch(err => {
+		res.status(401).json(err);
+	});
+});
+
+// Route for getting some data about our user to be used client side
+router.get('/api/sales/user_data', function (req, res) {
+	// console.log(req.user);
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      db.SalesUsers.findOne({
+        where: {
+          id: req.user.id
+        }
+      }).then(function (data) {
+        res.json({
+			id: data.user.id,
+          	username: req.user.username
+        });
+      });
+    }
+  });
+
+// Route for getting some data about our user to be used client side
+router.get('/api/business/user_data', function (req, res) {
+	// console.log(req.user);
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      db.BusinessUsers.findOne({
+        where: {
+          id: req.user.id
+        }
+      }).then(function (data) {
+        res.json({
+			id: data.user.id,
+          	username: req.user.username
+        });
+      });
+    }
+  });
 
 router.post('/sales/signup', (req, res) => {
 	db.SalesUsers.create({
