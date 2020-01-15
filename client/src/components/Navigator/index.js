@@ -12,10 +12,8 @@ function Navigator(props) {
 
 			<Navbar.Collapse id='navContent'>
 				<Nav className='ml-auto'>
-					<Nav.Link>
-						<Link to='/about' className={window.location.pathname==='/about' ? 'nav-link active' : 'nav-link'}>
-							About
-						</Link>
+					<Nav.Link href='/about' className={window.location.pathname==='/about' ? 'nav-link active' : 'nav-link'}>
+						About	
 					</Nav.Link>
 				</Nav>
 
