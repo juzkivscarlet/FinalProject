@@ -14,9 +14,9 @@ export default {
 		return axios.post('/business/login', data);
 	},
 	loggedInSales: function(data) {
-		return axios.get('/api/sales/user_data', data);
+		return axios.get('/api/sales/user_data');
 	},
 	loggedInBusiness: function(data) {
-		return axios.get('/api/business/user_data', data);
+		return axios.get('/api/business/user_data');
 	},
 };

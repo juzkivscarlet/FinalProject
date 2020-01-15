@@ -36,45 +36,38 @@ router.get('/api/business', (req,res) => {
 // Route for getting some data about our user to be used client side
 router.get('/api/sales/user_data', function (req, res) {
 	// console.log(req.user);
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      db.SalesUsers.findOne({
-        where: {
-          id: req.user.id
-        }
-      }).then(function (data) {
-        res.json({
-			id: data.user.id,
-          	username: req.user.username
-        });
-      });
-    }
+	if (!req.user) {
+	  // The user is not logged in, send back an empty object
+	  res.json({});
+	} else {
+	  // Otherwise send back the user's email and id
+	  // Sending back a password, even a hashed password, isn't a good idea
+	  console.log(req.user);
+	  res.json(req.user);
+	//   db.SalesUsers.findOne({
+	// 	where: {
+	// 	  username: req.user.username
+	// 	}
+	//   }).then(function (data) {
+	// 	res.json({
+	// 		username: data.data.username,
+	// 		lastName: data.data.lastName
+	// 	});
+	//   });
+	}
   });
 
 // Route for getting some data about our user to be used client side
 router.get('/api/business/user_data', function (req, res) {
 	// console.log(req.user);
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      db.BusinessUsers.findOne({
-        where: {
-          id: req.user.id
-        }
-      }).then(function (data) {
-        res.json({
-			id: data.user.id,
-          	username: req.user.username
-        });
-      });
-    }
+	if (!req.user) {
+	  // The user is not logged in, send back an empty object
+	  res.json({});
+	} else {
+	  // Otherwise send back the user's email and id
+	  // Sending back a password, even a hashed password, isn't a good idea
+	  res.json(req.user);
+	}
   });
 
 router.post('/sales/signup', (req, res) => {
@@ -96,7 +89,10 @@ router.post('/sales/signup', (req, res) => {
 });
 
 router.post('/sales/login', passport.authenticate('local'), (req,res) => {
-	res.json(req.user);
+	req.login(req.user, err => {
+		if(err) return console.log(err);
+		res.json(req.user);
+	});
 });
 
 router.post('/business/signup', (req,res) => {
@@ -114,7 +110,15 @@ router.post('/business/signup', (req,res) => {
 });
 
 router.post('/business/login', passport.authenticate('local'), (req,res) => {
-	res.json(req.user);
+	req.login(req.user, err => {
+		if(err) return console.log(err);
+		res.json(req.user);
+	});
 });
+
+router.get('/logout', (req,res) => {
+	req.logout();
+	res.redirect('/');
+})
 
 module.exports = router;

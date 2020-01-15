@@ -26,46 +26,46 @@ var db = require('../models');
 // ));
 
 passport.use(new LocalStrategy(
-    {usernameField: "username"}, function(username,password,done) {
-        db.SalesUsers.findOne({
-            where: {
-                username: username
-            }
-        }).then((user) => {
-            if(user){
-                return done(null, user);
-            }});
-        db.BusinessUsers.findOne({
-                where: {
-                    username: username
-                }
-            }).then((user) => {
-                if(user){
-                    return done(null, user);
-                }
-                if(!user) {                
-                    return done(null,false,{
-                        message: "Incorrect username."
-                    });
-                }
-                else if(!user.validPassword(password)) {
-                    return done(null,false,{
-                        message: "Incorrect password."
-                    });
-                }
+	{usernameField: "username"}, function(username,password,done) {
+		db.SalesUsers.findOne({
+			where: {
+				username: username
+			}
+		}).then((user) => {
+			if(user){
+				return done(null, user);
+			}});
+		db.BusinessUsers.findOne({
+				where: {
+					username: username
+				}
+			}).then((user) => {
+				if(user){
+					return done(null, user);
+				}
+				if(!user) {                
+					return done(null,false,{
+						message: "Incorrect username."
+					});
+				}
+				else if(!user.validPassword(password)) {
+					return done(null,false,{
+						message: "Incorrect password."
+					});
+				}
 
-            return done(null,user);
-        });
-    }
+			return done(null,user);
+		});
+	}
 ));
 
 
 passport.serializeUser((user,cb) => {
-    cb(null,user);
+	cb(null,user);
 });
 
 passport.deserializeUser((obj,cb) => {
-    cb(null,obj);
+	cb(null,obj);
 });
 
 module.exports = passport;
