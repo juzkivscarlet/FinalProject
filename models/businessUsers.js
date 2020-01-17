@@ -28,6 +28,9 @@ module.exports = function(sequelize, DataTypes) {
 			// validate: {
 			//   len: [8, 35]
 			// }
+		},
+		salesReps: {
+			type: DataTypes.ARRAY(DataTypes.INTEGER)
 		}
 	});
 	

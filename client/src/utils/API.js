@@ -22,5 +22,20 @@ export default {
 
 	searchProducts: function(data) {
 		return axios.get('/api/offerings');
+	},
+	postProduct: function(data) {
+		return axios.post('/api/offerings', data);
+	},
+	getSales: function(data) {
+		return axios.get('/api/sales');
+	},
+	postSale: function(data) {
+		return axios.post('/api/sales', data);
+	},
+	getLeads: function(data) {
+		return axios.get('/api/leads');
+	},
+	postLead: function(data) {
+		return axios.post('/api/leads', data);
 	}
 };
