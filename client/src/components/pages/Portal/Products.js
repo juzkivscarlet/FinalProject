@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import './style.css';
 
-import axios from 'axios';
+import API from '../../../utils/API';
 
 class Products extends Component {
 	state = {
