@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		products: {
 			type: DataTypes.ARRAY(DataTypes.INTEGER)
+		},
+		leads: {
+			type: DataTypes.ARRAY(DataTypes.INTEGER)
 		}
 	});
 

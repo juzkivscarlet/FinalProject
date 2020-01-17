@@ -31,6 +31,9 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		salesReps: {
 			type: DataTypes.ARRAY(DataTypes.INTEGER)
+		},
+		products: {
+			type: DataTypes.ARRAY(DataTypes.INTEGER)
 		}
 	});
 	
