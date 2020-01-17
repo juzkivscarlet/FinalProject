@@ -19,4 +19,8 @@ export default {
 	loggedInBusiness: function(data) {
 		return axios.get('/api/business/user_data');
 	},
+
+	searchProducts: function(data) {
+		return axios.get('/api/offerings');
+	}
 };

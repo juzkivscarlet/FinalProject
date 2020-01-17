@@ -9,6 +9,9 @@ import SignupModal from './components/SignupModal';
 import Wrapper from './components/Wrapper';
 import Header from './components/Header';
 
+import SalesPortal from './components/pages/Portal';
+import BusinessPortal from './components/pages/Portal';
+
 function App() {
 	return (
 		<Wrapper>
@@ -18,6 +21,8 @@ function App() {
 				<Container>
 					<Route exact path='/signup' component={SignupModal} />
 					<Route exact path='/about' component={About} />
+					<Route exact path='/portal/sales' component={SalesPortal} />
+					<Route exact path='/portal/business' component={BusinessPortal} />
 				</Container>
 			</Router>
 		</Wrapper>

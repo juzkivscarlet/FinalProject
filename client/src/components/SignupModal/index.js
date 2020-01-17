@@ -9,15 +9,13 @@ import './style.css';
 
 function SignupModal(props) {
 	const [show,setShow] = useState(false);
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
 	return (
 		<div>
-			<Button onClick={handleShow}>
+			<Button onClick={() => setShow(true)}>
 				Sign up for {props.type} account
 			</Button>
 
-			<Modal show={show} onHide={handleClose}>
+			<Modal show={show} onHide={() => setShow(false)}>
 				<Modal.Header closeButton>
 					<Modal.Title>Create {props.type} Account!</Modal.Title>
 				</Modal.Header>

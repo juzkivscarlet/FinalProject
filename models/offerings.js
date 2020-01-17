@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		commissions: {
+			type: DataTypes.DECIMAL(2,2),
+			allowNull: false
+		},
 		business: {
 			type: DataTypes.STRING,
 			allowNull: false

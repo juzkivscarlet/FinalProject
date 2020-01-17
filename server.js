@@ -22,7 +22,7 @@ app.use(passport.session())
 app.use(routes);
 
 
-db.sequelize.sync(/*{force: 'false'}*/).then(() => {
+db.sequelize.sync().then(() => {
 	app.listen(PORT, () => {
 		console.log(`Live on localhost:${PORT}`);
 	});

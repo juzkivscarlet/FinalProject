@@ -119,6 +119,14 @@ router.post('/business/login', passport.authenticate('local'), (req,res) => {
 router.get('/logout', (req,res) => {
 	req.logout();
 	res.redirect('/');
-})
+});
+
+router.get('/api/offerings', (req,res) => {
+	db.offerings.findAll({}).then(data => {
+		res.json({data: data});
+	}).catch(err => {
+		res.status(401).json(err);
+	});
+});
 
 module.exports = router;

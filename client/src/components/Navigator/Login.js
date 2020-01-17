@@ -34,9 +34,10 @@ class Login extends Component {
 			API.loginBusiness({
 				username: this.state.username,
 				password: this.state.password
-			}).then(res => console.log(res)).catch(err => console.log(err));
+			}).then(res => {
+				API.loggedInBusiness();
+			}).catch(err => console.log(err));
 
-			API.loggedInBusiness();
 		}
 	};
 
