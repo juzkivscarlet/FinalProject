@@ -11,15 +11,12 @@ module.exports = function(sequelize, DataTypes) {
 		phoneNumber: {
 			type: DataTypes.INTEGER(10),
 			allowNull: true
-		},
-		business: {
-			type: DataTypes.STRING,
-			allowNull: false
 		}
 	});
 
 	Leads.associate = function(models) {
 		Leads.hasMany(models.SalesUsers);
+		Leads.belongsTo(models.BusinessUsers);
 	};
 
 	return Leads;
