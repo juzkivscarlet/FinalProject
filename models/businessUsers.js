@@ -4,24 +4,24 @@ var bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
 	var BusinessUsers = sequelize.define("BusinessUsers", {
 		businessName:{
-				type: DataTypes.STRING,
-				allowNull: false
-				// validate: {
-				//     len:[3, 25]
-				// }
+			type: DataTypes.STRING,
+			allowNull: false
+			// validate: {
+			//     len:[3, 25]
+			// }
 		},
 		industry:{
-				type: DataTypes.STRING,
-				allowNull: false,
+			type: DataTypes.STRING,
+			allowNull: false,
 		},
 		username: {
-				type: DataTypes.STRING,
-				allowNull: false
-				// unique: true,
-				// validate: {
-				//   len: [5, 25]
-				// }
-			},
+			type: DataTypes.STRING,
+			allowNull: false
+			// unique: true,
+			// validate: {
+			//   len: [5, 25]
+			// }
+		},
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -53,8 +53,9 @@ module.exports = function(sequelize, DataTypes) {
 	});
 	
 	BusinessUsers.associate = function(models) {
-		BusinessUsers.hasMany(models.offerings);
-		BusinessUsers.hasMany(models.SalesUsers,);
+		BusinessUsers.hasMany(models.Offerings);
+		BusinessUsers.hasMany(models.SalesUsers);
+		BusinessUsers.hasMany(models.Sales);
 	};
 
 	return BusinessUsers;
