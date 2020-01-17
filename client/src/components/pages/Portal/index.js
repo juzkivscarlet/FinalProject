@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './style.css';
 
-function Portal() {
+import API from '../../../utils/API';
+import Products from './Products';
 
+import SalesPortal from './SalesPortal';
+import BusinessPortal from './BusinessPortal';
+
+class Portal extends Component {
+    state = {
+
+    };
+
+    render() {
+        
+    }
 }
 
 export default Portal;

@@ -21,19 +21,19 @@ export default {
 	},
 
 	searchProducts: function(data) {
-		return axios.get('/api/offerings');
+		return axios.get('/api/offerings', data);
 	},
 	postProduct: function(data) {
 		return axios.post('/api/offerings', data);
 	},
 	getSales: function(data) {
-		return axios.get('/api/sales');
+		return axios.get('/api/sales', data);
 	},
 	postSale: function(data) {
 		return axios.post('/api/sales', data);
 	},
 	getLeads: function(data) {
-		return axios.get('/api/leads');
+		return axios.get('/api/leads', data);
 	},
 	postLead: function(data) {
 		return axios.post('/api/leads', data);

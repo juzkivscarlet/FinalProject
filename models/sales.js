@@ -1,9 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	let sales = sequelize.define('Sales', {
-		salesRep: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
+	let Sales = sequelize.define('Sales', {
 		commission: {
 			type: DataTypes.DECIMAL(2,2),
 			allowNull: false
@@ -14,5 +10,9 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	return sales;
+	Sales.associate = function(models) {
+		Sales.hasOne(models.SalesUser);
+	};
+
+	return Sales;
 };

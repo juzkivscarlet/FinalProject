@@ -9,7 +9,7 @@ class BusinessPortal extends Component {
 	};
 
 	componentDidMount() {
-
+		
 	}
 
 	render() {

@@ -29,11 +29,10 @@ module.exports = function(sequelize, DataTypes) {
 			//   len: [8, 35]
 			// }
 		},
-		salesReps: {
-			type: DataTypes.ARRAY(DataTypes.INTEGER)
-		},
-		products: {
-			type: DataTypes.ARRAY(DataTypes.INTEGER)
+		accountType: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			defaultValue: 'Business'
 		}
 	});
 	
@@ -53,5 +52,10 @@ module.exports = function(sequelize, DataTypes) {
 		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
 	});
 	
+	BusinessUsers.associate = function(models) {
+		BusinessUsers.hasMany(models.offerings);
+		BusinessUsers.hasMany(models.SalesUsers,);
+	};
+
 	return BusinessUsers;
 };

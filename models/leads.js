@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	let leads = sequelize.define("Leads", {
+	let Leads = sequelize.define("Leads", {
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -18,5 +18,9 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	return leads;
+	Leads.associate = function(models) {
+		Leads.hasMany(models.SalesUsers);
+	};
+
+	return Leads;
 };

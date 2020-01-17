@@ -27,11 +27,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		products: {
-			type: DataTypes.ARRAY(DataTypes.INTEGER)
-		},
-		leads: {
-			type: DataTypes.ARRAY(DataTypes.INTEGER)
+		accountType: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			defaultValue: 'Sales'
 		}
 	});
 
@@ -42,6 +41,11 @@ module.exports = (sequelize, DataTypes) => {
 	SalesUsers.addHook("beforeCreate", function(user) {
 		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
 	});
+
+	SalesUsers.associate = function(models) {
+		SalesUsers.hasMany(models.Offerings);
+		SalesUsers.hasMany(models.Leads);
+	};
 
 	return SalesUsers;
 };

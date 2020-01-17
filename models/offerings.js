@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	let offerings = sequelize.define("Offerings", {
+	let Offerings = sequelize.define("Offerings", {
 		product: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -15,12 +15,13 @@ module.exports = function(sequelize, DataTypes) {
 		commissions: {
 			type: DataTypes.DECIMAL(2,2),
 			allowNull: false
-		},
-		business: {
-			type: DataTypes.STRING,
-			allowNull: false
 		}
 	});
 
-	return offerings;
+	Offerings.associate = function(models) {
+		Offerings.belongsTo(models.BusinessUsers);
+		Offerings.hasMany(models.SalesUsers);
+	};
+
+	return Offerings;
 };

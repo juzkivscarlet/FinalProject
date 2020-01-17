@@ -121,8 +121,20 @@ router.get('/logout', (req,res) => {
 	res.redirect('/');
 });
 
+// router.get('/api/user', (req,res) => {
+// 	if(req.user.accountType==='Sales') {
+
+// 	} else {
+
+// 	}
+// });
+
 router.get('/api/offerings', (req,res) => {
-	db.offerings.findAll({}).then(data => {
+	db.offerings.findAll({
+		// where: {
+
+		// }
+	}).then(data => {
 		res.json({data: data});
 	}).catch(err => {
 		res.status(401).json(err);
@@ -145,7 +157,11 @@ router.post('/api/offerings', (req,res) => {
 });
 
 router.get('/api/sales', (req,res) => {
-	db.sales.findAll({}).then(data => {
+	db.sales.findAll({
+		// where: {
+
+		// }
+	}).then(data => {
 		res.json({data: data});
 	}).catch(err => {
 		res.status(401).json(err);
@@ -175,7 +191,10 @@ router.get('/api/leads', (req,res) => {
 
 router.post('/api/leads', (req,res) => {
 	db.leads.create({
-
+		name: req.body.name,
+		email: req.body.email,
+		phoneNumber: req.body.phoneNumber,
+		business: req.body.business
 	}).then(data => {
 		res.json({data: data});
 	}).catch(err => {
