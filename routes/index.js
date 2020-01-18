@@ -121,28 +121,20 @@ router.get('/logout', (req,res) => {
 	res.redirect('/');
 });
 
-// router.get('/api/user', (req,res) => {
-// 	if(req.user.accountType==='Sales') {
-
-// 	} else {
-
-// 	}
-// });
+router.get('/api/user', (req,res) => {
+	res.json(req.user);
+});
 
 router.get('/api/offerings', (req,res) => {
-	db.offerings.findAll({
-		// where: {
-
-		// }
-	}).then(data => {
-		res.json({data: data});
+	db.Offerings.findAll({}).then(data => {
+		res.json(data);
 	}).catch(err => {
 		res.status(401).json(err);
 	});
 });
 
 router.post('/api/offerings', (req,res) => {
-	db.offerings.create({
+	db.Offerings.create({
 		product: req.body.product,
 		description: req.body.description,
 		priceRange: req.body.priceRange,
@@ -157,7 +149,7 @@ router.post('/api/offerings', (req,res) => {
 });
 
 router.get('/api/sales', (req,res) => {
-	db.sales.findAll({
+	db.Sales.findAll({
 		// where: {
 
 		// }
@@ -169,7 +161,7 @@ router.get('/api/sales', (req,res) => {
 });
 
 router.post('/api/sales', (req,res) => {
-	db.sales.create({
+	db.Sales.create({
 		salesRep: req.body.salesRep,
 		commission: req.body.commission,
 		approved: req.body.approved
@@ -182,7 +174,7 @@ router.post('/api/sales', (req,res) => {
 });
 
 router.get('/api/leads', (req,res) => {
-	db.leads.findAll({}).then(data => {
+	db.Leads.findAll({}).then(data => {
 		res.json({data: data});
 	}).catch(err => {
 		res.status(401).json(err);
@@ -190,7 +182,7 @@ router.get('/api/leads', (req,res) => {
 });
 
 router.post('/api/leads', (req,res) => {
-	db.leads.create({
+	db.Leads.create({
 		name: req.body.name,
 		email: req.body.email,
 		phoneNumber: req.body.phoneNumber,

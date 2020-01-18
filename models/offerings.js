@@ -4,6 +4,10 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		business: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		description: {
 			type: DataTypes.STRING,
 			allowNull: true
@@ -13,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		commissions: {
-			type: DataTypes.DECIMAL(2,2),
+			type: DataTypes.FLOAT(2),
 			allowNull: false
 		}
 	});

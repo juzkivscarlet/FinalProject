@@ -5,8 +5,6 @@ import './style.css';
 import SignupModal from '../SignupModal';
 import API from '../../utils/API';
 
-import Products from '../pages/Portal/Products';
-
 class Login extends Component {
 	state = {
 		username: '',
@@ -29,7 +27,7 @@ class Login extends Component {
 				password: this.state.password
 			}).then(res => {
 				API.loggedInSales();
-				window.location.href = '/products';
+				window.location.href = '/portal/sales';
 			}).catch(err => console.log(err));
 			
 		}
@@ -39,7 +37,7 @@ class Login extends Component {
 				password: this.state.password
 			}).then(res => {
 				API.loggedInBusiness();
-				window.location.href = '/products';
+				window.location.href = '/portal/business';
 			}).catch(err => console.log(err));
 
 		}

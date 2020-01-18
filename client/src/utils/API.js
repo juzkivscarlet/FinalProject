@@ -20,8 +20,12 @@ export default {
 		return axios.get('/api/business/user_data');
 	},
 
+	userInfo: function() {
+		return axios.get('/api/user');
+	},
+
 	searchProducts: function(data) {
-		return axios.get('/api/offerings', data);
+		return axios.get('/api/offerings');
 	},
 	postProduct: function(data) {
 		return axios.post('/api/offerings', data);

@@ -9,8 +9,8 @@ import SignupModal from './components/SignupModal';
 import Wrapper from './components/Wrapper';
 import Header from './components/Header';
 
-import SalesPortal from './components/pages/Portal';
-import BusinessPortal from './components/pages/Portal';
+import SalesPortal from './components/pages/Portal/SalesPortal';
+import BusinessPortal from './components/pages/Portal/BusinessPortal';
 import Products from './components/pages/Portal/Products'
 
 function App() {
@@ -18,6 +18,8 @@ function App() {
 		<Router>
 			<Route exact path='/' component={Home} />
 			<Route exact path='/products' component={Products} />
+			<Route exact path='/portal/business' component={BusinessPortal} />
+			<Route exact path='/portal/sales' component={SalesPortal} />
 		</Router>
 	);
 }
