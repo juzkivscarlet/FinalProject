@@ -5,6 +5,8 @@ import './style.css';
 import SignupModal from '../SignupModal';
 import API from '../../utils/API';
 
+import Products from '../pages/Portal/Products';
+
 class Login extends Component {
 	state = {
 		username: '',
@@ -17,8 +19,8 @@ class Login extends Component {
 			[name]: value
 		});
 	};
-
-	loginUser = e => {
+	
+	loginUser = (e) => {
 		e.preventDefault();
 		
 		if(this.props.type === 'Sales'){
@@ -27,6 +29,7 @@ class Login extends Component {
 				password: this.state.password
 			}).then(res => {
 				API.loggedInSales();
+				window.location.href = '/products';
 			}).catch(err => console.log(err));
 			
 		}
@@ -36,12 +39,10 @@ class Login extends Component {
 				password: this.state.password
 			}).then(res => {
 				API.loggedInBusiness();
+				window.location.href = '/products';
 			}).catch(err => console.log(err));
 
 		}
-
-		let history = useHistory();
-		history.push('/products');
 	};
 
 	render() {

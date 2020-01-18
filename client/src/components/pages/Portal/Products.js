@@ -23,10 +23,10 @@ class Products extends Component {
 						<th>Price Range</th>
 						<th>Commissions</th>
 					</tr>
-					<tbody>
-
-					</tbody>
 				</thead>
+				<tbody>
+
+				</tbody>
 			</Table>
 		);
 	}
