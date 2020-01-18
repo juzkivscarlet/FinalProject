@@ -11,8 +11,8 @@ module.exports = function(sequelize, DataTypes) {
 	});
 
 	Sales.associate = function(models) {
-		Sales.hasOne(models.SalesUsers);
-		Sales.hasOne(models.BusinessUsers)
+		// Sales.hasOne(models.SalesUsers);
+		// Sales.hasOne(models.BusinessUsers)
 	};
 
 	return Sales;

@@ -13,7 +13,7 @@ class SalesPortal extends Component {
 	}
 
 	render() {
-
+		return ;
 	}
 }
 

@@ -15,8 +15,8 @@ module.exports = function(sequelize, DataTypes) {
 	});
 
 	Leads.associate = function(models) {
-		Leads.hasMany(models.SalesUsers);
-		Leads.belongsTo(models.BusinessUsers);
+		// Leads.hasMany(models.SalesUsers);
+		// Leads.belongsTo(models.BusinessUsers);
 	};
 
 	return Leads;

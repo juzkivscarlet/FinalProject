@@ -13,7 +13,7 @@ class Portal extends Component {
     };
 
     render() {
-        
+        return ;
     }
 }
 

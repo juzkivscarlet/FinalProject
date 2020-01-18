@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import Home from './components/pages/Home'
 import About from './components/pages/About';
 
 import Container from './components/Container';
@@ -11,21 +11,14 @@ import Header from './components/Header';
 
 import SalesPortal from './components/pages/Portal';
 import BusinessPortal from './components/pages/Portal';
+import Products from './components/pages/Portal/Products'
 
 function App() {
 	return (
-		<Wrapper>
-			<Router>
-				<Navigator />
-				<Header />
-				<Container>
-					<Route exact path='/signup' component={SignupModal} />
-					<Route exact path='/about' component={About} />
-					<Route exact path='/portal/sales' component={SalesPortal} />
-					<Route exact path='/portal/business' component={BusinessPortal} />
-				</Container>
-			</Router>
-		</Wrapper>
+		<Router>
+			<Route exact path='/' component={Home} />
+			<Route exact path='/products' component={Products} />
+		</Router>
 	);
 }
 

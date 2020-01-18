@@ -13,7 +13,7 @@ class BusinessPortal extends Component {
 	}
 
 	render() {
-
+		return ;
 	}
 }
 

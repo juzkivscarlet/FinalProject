@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import { Button, Dropdown, DropdownButton, Form } from 'react-bootstrap';
+import {Link, useHistory, Redirect, useLocation} from 'react-router-dom';
+import { Button, Dropdown, DropdownButton, Form, Nav } from 'react-bootstrap';
 import './style.css';
 import SignupModal from '../SignupModal';
 import API from '../../utils/API';
@@ -39,6 +39,9 @@ class Login extends Component {
 			}).catch(err => console.log(err));
 
 		}
+
+		let history = useHistory();
+		history.push('/products');
 	};
 
 	render() {
