@@ -41,5 +41,8 @@ export default {
 	},
 	postLead: function(data) {
 		return axios.post('/api/leads', data);
-	}
+	},
+	getModules: function(data) {
+		return axios.get('/api/modules', data);
+	},
 };

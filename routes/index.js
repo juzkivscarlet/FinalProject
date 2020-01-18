@@ -195,4 +195,12 @@ router.post('/api/leads', (req,res) => {
 	});
 });
 
+router.get('/api/modules', (req,res) => {
+	db.Modules.findAll({}).then(data => {
+		res.json({data: data});
+	}).catch(err => {
+		res.status(401).json(err);
+	});
+});
+
 module.exports = router;

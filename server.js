@@ -17,7 +17,7 @@ app.use(express.json());
 if(process.env.NODE_ENV==='production') app.use(express.static('client/build'));
 app.use(session({secret:'dog', saveUninitialized:true, resave:true}));
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 
 app.use(routes);
 
