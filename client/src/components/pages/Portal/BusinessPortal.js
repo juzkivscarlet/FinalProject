@@ -5,7 +5,7 @@ import { faBriefcase, faIndustry, faUserEdit } from '@fortawesome/free-solid-svg
 import './style.css';
 
 import Header from '../../Header';
-import Products from './Products';
+import BusinessProducts from './BusinessProducts';
 
 import API from '../../../utils/API';
 
@@ -84,7 +84,7 @@ class BusinessPortal extends Component {
 				<Header />
 				<Container>
 					<BusinessAvatar />
-					<Products />
+					<BusinessProducts />
 				</Container>
 			</div>
 		);

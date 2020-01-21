@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faIndustry, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 import Header from '../../Header';
-import Products from './Products';
+import SalesProducts from './SalesProducts';
 import Modules from './Modules';
 import Leads from './Leads';
 import API from '../../../utils/API';
@@ -103,7 +103,7 @@ class SalesPortal extends Component {
 						</Col>
 					</Row>
 					<h2 className='text-center'>Products</h2>
-					<Products />
+					<SalesProducts />
 				</Container>
 			</div>
 		);

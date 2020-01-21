@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import './style.css';
 
 import API from '../../../utils/API';
 
-class Products extends Component {
+class SalesProducts extends Component {
 	state = {
 		products: []
 	};
@@ -49,4 +49,4 @@ class Products extends Component {
 	}
 }
 
-export default Products;
+export default SalesProducts;
