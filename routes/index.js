@@ -116,9 +116,10 @@ router.post('/business/login', passport.authenticate('local'), (req,res) => {
 	});
 });
 
+// logging out
 router.get('/logout', (req,res) => {
 	req.logout();
-	res.redirect('/');
+	res.redirect("/");
 });
 
 router.get('/api/user', (req,res) => {

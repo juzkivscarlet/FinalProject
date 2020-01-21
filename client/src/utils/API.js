@@ -45,4 +45,7 @@ export default {
 	getModules: function(data) {
 		return axios.get('/api/modules', data);
 	},
+	logOut: function(){
+		return axios.get('/logout');
+	}
 };

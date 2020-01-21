@@ -4,7 +4,7 @@ import './style.css';
 
 import API from '../../../utils/API';
 
-class Products extends Component {
+class Leads extends Component {
 	state = {
 		leads: []
 	};
@@ -45,4 +45,4 @@ class Products extends Component {
 	}
 }
 
-export default Products;
+export default Leads;

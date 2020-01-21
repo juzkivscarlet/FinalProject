@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faIndustry, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faIndustry, faUserEdit, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 import Header from '../../Header';
 import SalesProducts from './SalesProducts';
@@ -36,7 +36,11 @@ class SalesAvetar extends Component {
 			[name]: value
 		});
 	};
-	
+
+	logOut = e => {
+		e.preventDefault();
+		API.logOut().then(res => window.location.href = '/').catch(err => console.log(err));
+	};
 
 	render() {
 		return (
@@ -70,6 +74,10 @@ class SalesAvetar extends Component {
 						<Button variant='info'>
 							<FontAwesomeIcon icon={faUserEdit} />
 							Change account info
+						</Button>
+						<Button variant='info' onClick={this.logOut}>
+							<FontAwesomeIcon icon={faSignOutAlt} />
+							Log Out
 						</Button>
 					</div>
 				</Card.Body>
