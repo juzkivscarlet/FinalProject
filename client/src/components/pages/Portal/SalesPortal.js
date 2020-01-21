@@ -92,11 +92,17 @@ class SalesPortal extends Component {
 			<div>
 				<Container>
 					<SalesAvetar />
-					<h2>Modules</h2>
-					<Modules />
-					<h2>Leads</h2>
-					<Leads />
-					<h2>Products</h2>
+					<Row>
+						<Col>
+							<h2 className='text-center'>Modules</h2>
+							<Modules />
+						</Col>
+						<Col>
+							<h2 className='text-center'>Leads</h2>
+							<Leads />
+						</Col>
+					</Row>
+					<h2 className='text-center'>Products</h2>
 					<Products />
 				</Container>
 			</div>
