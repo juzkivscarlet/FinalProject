@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faIndustry, faUserEdit } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faIndustry, faPlusCircle, faSignOutAlt, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 
 import Header from '../../Header';
+import Approvals from './Approvals';
 import BusinessProducts from './BusinessProducts';
 
 import API from '../../../utils/API';
@@ -27,40 +28,42 @@ class BusinessAvatar extends Component {
 		});
 	}
 
+	logout = e => {
+		e.preventDefault();
+		API.logout().then(res => window.location.href = '/').catch(err => console.log(err));
+	};
+
 	render() {
 		return (
-			<Card bg='info' text='white' className='w-25'>
-				<Card.Header>Account info</Card.Header>
+			<Card bg='info' text='white'>
+				<Card.Header className='text-center'>Sales Rep Info</Card.Header>
 				<Card.Body>
-					<ListGroup className='text-dark'>
-						<ListGroup.Item>
-							<Row>
-								<Col sm={2}>
-									<FontAwesomeIcon icon={faBriefcase} />
-								</Col>
-								<Col sm={10}>
-									<span className='text-muted'>Business: </span>
-									{this.state.businessName}
-								</Col>
-							</Row>
-						</ListGroup.Item>
-						<ListGroup.Item>
-							<Row>
-								<Col sm={2}>
-									<FontAwesomeIcon icon={faIndustry} />
-								</Col>
-								<Col sm={10}>
-									<span className='text-muted'>Industry: </span>
-									{this.state.industry}
-								</Col>
-							</Row>
-						</ListGroup.Item>
-					</ListGroup>
+					<Row className='w-100 mx-auto'>
+						<ListGroup horizontal className='text-dark mx-auto'>
+
+							<ListGroup.Item>
+								<FontAwesomeIcon icon={faBriefcase} />
+								<span className='text-muted'>Business: </span>
+								{this.state.businessName}
+							</ListGroup.Item>
+
+							<ListGroup.Item>
+								<FontAwesomeIcon icon={faIndustry} />
+								<span className='text-muted'>Industry: </span>
+								{this.state.industry}
+							</ListGroup.Item>
+
+						</ListGroup>
+					</Row>
 	
 					<div className='text-center'>
 						<Button variant='info'>
 							<FontAwesomeIcon icon={faUserEdit} />
 							Change account info
+						</Button>
+						<Button variant='info' onClick={this.logOut}>
+							<FontAwesomeIcon icon={faSignOutAlt} />
+							Log Out
 						</Button>
 					</div>
 				</Card.Body>
@@ -84,7 +87,28 @@ class BusinessPortal extends Component {
 				<Header />
 				<Container>
 					<BusinessAvatar />
-					<BusinessProducts />
+					<Row>
+						<h2 className='w-100 text-center'>Sales Approvals</h2>
+						<Approvals />
+					</Row>
+
+					<Row>
+						<Col md={4} />
+						<Col md={4}>
+							<h2 className='text-center'>
+								Products
+							</h2>
+						</Col>
+						<Col md={4} className='text-right'>
+							<Button variant='info'>
+								<FontAwesomeIcon icon={faPlusCircle} size="lg" />
+								Add Product
+							</Button>
+						</Col>
+					</Row>
+					<Row>
+						<BusinessProducts />
+					</Row>
 				</Container>
 			</div>
 		);

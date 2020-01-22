@@ -1,6 +1,7 @@
 const path = require('path');
 const passport = require('../config/passport');
 const express = require('express');
+const axios = require('axios');
 const router = express();
 // const apiRoutes = require('./apiRoutes');
 
@@ -151,9 +152,9 @@ router.post('/api/offerings', (req,res) => {
 
 router.get('/api/sales', (req,res) => {
 	db.Sales.findAll({
-		// where: {
-
-		// }
+		where: {
+			businessName: req.user.businessName
+		}
 	}).then(data => {
 		res.json({data: data});
 	}).catch(err => {

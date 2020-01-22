@@ -27,7 +27,15 @@ class BusinessForm extends Component {
 			industry: this.state.industry,
 			username: this.state.username,
 			password: this.state.password
-		}).then(res => console.log(res)).catch(err => console.log(err));
+		}).then(res => {
+			API.loginBusiness({
+				username: this.state.username,
+				password: this.state.password
+			}).then(res => {
+				API.loggedInBusiness();
+				window.location.href = '/portal/business';
+			}).catch(err => console.log(err));
+		}).catch(err => console.log(err));
 	};
 
 	render() {

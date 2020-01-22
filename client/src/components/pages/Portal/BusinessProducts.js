@@ -24,13 +24,7 @@ class BusinessProducts extends Component {
 			<Table striped bordered hover>
 				<thead>
 					<tr>
-						<th colSpan="5" className="text-center">
-							<Button variant="primary">Add</Button>
-						</th>
-					</tr>
-					<tr>
 						<th>Asset/Product</th>
-						<th>Business</th>
 						<th>Description</th>
 						<th>Price Range</th>
 						<th>Commissions</th>
@@ -41,7 +35,6 @@ class BusinessProducts extends Component {
 						return (
 							<tr key={i}>
 								<td>{item.product}</td>
-								<td>{item.business}</td>
 								<td>{item.description}</td>
 								<td>{item.priceRange}</td>
 								<td>{item.commissions}%</td>

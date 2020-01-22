@@ -10,7 +10,7 @@ import Leads from './Leads';
 import API from '../../../utils/API';
 
 
-class SalesAvetar extends Component {
+class SalesAvatar extends Component {
 	state = {
 		firstName: '',
 		lastName: '',
@@ -99,7 +99,7 @@ class SalesPortal extends Component {
 		return (
 			<div>
 				<Container>
-					<SalesAvetar />
+					<SalesAvatar />
 					<Row>
 						<Col>
 							<h2 className='text-center'>Modules</h2>
