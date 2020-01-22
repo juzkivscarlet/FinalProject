@@ -1,11 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
 	let Sales = sequelize.define('Sales', {
+		offering: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		commission: {
 			type: DataTypes.DECIMAL(2,2),
 			allowNull: false
 		}, 
-		approved: {
-			type: DataTypes.BOOLEAN,
+		salesRep:{
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		businessName:{
+			type: DataTypes.STRING,
 			allowNull: false
 		}
 	});
