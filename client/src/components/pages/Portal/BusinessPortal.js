@@ -28,9 +28,9 @@ class BusinessAvatar extends Component {
 		});
 	}
 
-	logout = e => {
+	logOut = e => {
 		e.preventDefault();
-		API.logout().then(res => window.location.href = '/').catch(err => console.log(err));
+		API.logOut().then(res => window.location.href = '/').catch(err => console.log(err));
 	};
 
 	render() {
