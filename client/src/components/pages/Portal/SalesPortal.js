@@ -5,6 +5,7 @@ import { faBriefcase, faIndustry, faUserEdit, faSignOutAlt } from '@fortawesome/
 import './style.css';
 import Header from '../../Header';
 import SalesProducts from './SalesProducts';
+import ChangeAccountInfoModal from '../../ChangeAccountInfoModal';
 import Modules from './Modules';
 import Leads from './Leads';
 import API from '../../../utils/API';
@@ -71,10 +72,7 @@ class SalesAvatar extends Component {
 					</Row>
 	
 					<div className='text-center'>
-						<Button variant='info'>
-							<FontAwesomeIcon icon={faUserEdit} />
-							Change account info
-						</Button>
+						<ChangeAccountInfoModal type={this.props.type} />
 						<Button variant='info' onClick={this.logOut}>
 							<FontAwesomeIcon icon={faSignOutAlt} />
 							Log Out

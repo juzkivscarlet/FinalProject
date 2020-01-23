@@ -7,6 +7,9 @@ export default {
 	loginSales: function(userData) {
 		return axios.post('/sales/login', userData);
 	},
+	updateSalesAccount: function(data) {
+		return axios.put('/sales/update', data);
+	},
 	signUpBusiness: function(data) {
 		return axios.post('/business/signup', data);
 	},

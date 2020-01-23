@@ -96,6 +96,25 @@ router.post('/sales/login', passport.authenticate('local'), (req,res) => {
 	});
 });
 
+router.put('/sales/update', (req,res) => {
+	// console.log(req.body);
+	db.SalesUsers.update(
+		{firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		username: req.body.username,
+		email: req.body.email,
+		// password: req.body.password,
+		},
+		// *** have to update to id, just trying to get it to work for now
+		{where: {firstName: req.body.firstName}}
+	).then(data => {
+		res.json({data:data});
+	}).catch(err => {
+		console.log(err);
+		res.status(401).json();
+	});
+});
+
 router.post('/business/signup', (req,res) => {
 	db.BusinessUsers.create({
 		businessName: req.body.businessName,
