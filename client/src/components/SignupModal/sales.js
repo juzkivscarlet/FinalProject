@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
 import API from '../../utils/API';
-​
+
 class SalesForm extends Component {
 	state = {
 		firstName: '',
@@ -10,19 +10,19 @@ class SalesForm extends Component {
 		email: '',
 		password: ''
 	};
-​
+
 	// componentDidMount() {}
-​
+
 	handleInputChange = event => {
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
 		});
 	};
-​
+
 	signUpUser = event => {
 		event.preventDefault();
-​
+
 		API.signUpSales({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
@@ -44,13 +44,13 @@ class SalesForm extends Component {
 			console.log(err);
 		});
 	};
-​
+
 	render() {
 		return (
 			<Modal.Body>
 				<h2>Sales Form</h2>
 				<Form>
-​
+
 					<Form.Group id="salesFirstName">
 						<Form.Label>First Name</Form.Label>
 						<Form.Control 
@@ -60,7 +60,7 @@ class SalesForm extends Component {
 							value={this.state.firstName} 
 							onChange={this.handleInputChange} />
 					</Form.Group>
-​
+
 					<Form.Group id="salesLastName">
 						<Form.Label>Last Name</Form.Label>
 						<Form.Control 
@@ -70,7 +70,7 @@ class SalesForm extends Component {
 							value={this.state.lastName}
 							onChange={this.handleInputChange} />
 					</Form.Group>
-​
+
 					<Form.Group id="salesUsername">
 						<Form.Label>User Name</Form.Label>
 						<Form.Control 
@@ -80,7 +80,7 @@ class SalesForm extends Component {
 							value={this.state.userName}
 							onChange={this.handleInputChange} />
 					</Form.Group>
-​
+
 					<Form.Group id="salesEmail">
 						<Form.Label>Email address</Form.Label>
 						<Form.Control 
@@ -93,7 +93,7 @@ class SalesForm extends Component {
 						We'll never share your email with anyone else.
 						</Form.Text>
 					</Form.Group>
-​
+
 					<Form.Group id="salesPassword">
 						<Form.Label>Password</Form.Label>
 						<Form.Control 
@@ -103,7 +103,7 @@ class SalesForm extends Component {
 							value={this.state.password}
 							onChange={this.handleInputChange} />
 					</Form.Group>
-​
+
 					<Button onClick={this.signUpUser} variant="primary" type="submit" id="salesSubmit">
 						Submit
 					</Button>
@@ -112,5 +112,5 @@ class SalesForm extends Component {
 		);
 	}
 }
-​
+
 export default SalesForm;
