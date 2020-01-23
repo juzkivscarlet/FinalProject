@@ -84,7 +84,7 @@ class AccountInfo extends Component {
 						<Form.Control 
 							type="text" 
 							placeholder="Username"
-							name='userName'
+							name='username'
 							value={this.state.username}
 							onChange={this.handleInputChange} />
 					</Form.Group>
