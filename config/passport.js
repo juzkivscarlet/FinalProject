@@ -6,23 +6,32 @@ passport.use(new LocalStrategy(
 	{usernameField: "username"}, function(username,password,done) {
 		db.SalesUsers.findOne({
 			where: {
-				username: username,
-				password: password
+				username: username
 			}
 		}).then((user) => {
-			if(user){
+			if(user && user.validPassword(password)){
 				return done(null, user);
-			}});
+			}
+			else if(!user) {                
+				return done(null,false,{
+					message: "Incorrect username."
+				});
+			}
+			else if(!user.validPassword(password)) {
+				return done(null,false,{
+					message: "Incorrect password."
+				});
+			}
+		});
 		db.BusinessUsers.findOne({
 				where: {
-					username: username,
-					password: password
+					username: username
 				}
 			}).then((user) => {
-				if(user){
+				if(user && user.validPassword(password)){
 					return done(null, user);
 				}
-				if(!user) {                
+				else if(!user) {                
 					return done(null,false,{
 						message: "Incorrect username."
 					});
@@ -32,8 +41,6 @@ passport.use(new LocalStrategy(
 						message: "Incorrect password."
 					});
 				}
-
-			return done(null,user);
 		});
 	}
 ));
