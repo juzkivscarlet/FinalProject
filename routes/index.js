@@ -106,7 +106,7 @@ router.put('/sales/update', (req,res) => {
 		// password: req.body.password,
 		},
 		// *** have to update to id, just trying to get it to work for now
-		{where: {firstName: req.body.firstName}}
+		{where: {id: req.body.id}}
 	).then(data => {
 		res.json({data:data});
 	}).catch(err => {

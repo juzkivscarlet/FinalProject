@@ -38,6 +38,7 @@ class AccountInfo extends Component {
 	updateUser = event => {
 		event.preventDefault();
 		API.updateSalesAccount({
+            id: this.state.id,
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
 			username: this.state.username,
@@ -57,16 +58,6 @@ class AccountInfo extends Component {
 		return (
 			<Modal.Body>
 				<Form>
-
-					<Form.Group id="salesId">
-						<Form.Label>ID</Form.Label>
-						<Form.Control 
-							type="text" 
-							placeholder="ID" 
-							name='id'
-							value={this.state.id} 
-							onChange={this.handleInputChange} />
-					</Form.Group>
 
 					<Form.Group id="salesFirstName">
 						<Form.Label>First Name</Form.Label>
