@@ -17,7 +17,7 @@ export default {
 		return axios.post('/business/login', data);
 	},
 	updateBusinessAccount: function(data) {
-		return axios.post('/business/update', data);	
+		return axios.put('/business/update', data);	
 	},
 	loggedInSales: function(data) {
 		return axios.get('/api/sales/user_data');

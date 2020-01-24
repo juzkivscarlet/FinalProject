@@ -12,7 +12,7 @@ class AccountInfo extends Component {
 		lastName: '',
 		userName: '',
 		email: '',
-		// password: ''
+		password: ''
 	};
     
 
@@ -43,7 +43,7 @@ class AccountInfo extends Component {
 			lastName: this.state.lastName,
 			username: this.state.username,
 			email: this.state.email,
-			// password: this.state.password
+			password: this.state.password
 		})
 		.then(res => {
             window.location.reload(false);
@@ -102,7 +102,7 @@ class AccountInfo extends Component {
 						</Form.Text>
 					</Form.Group>
 
-					{/* <Form.Group id="salesPassword">
+					<Form.Group id="salesPassword">
 						<Form.Label>Password</Form.Label>
 						<Form.Control 
 							type="password" 
@@ -110,7 +110,7 @@ class AccountInfo extends Component {
 							name='password'
 							value={this.state.password}
 							onChange={this.handleInputChange} />
-					</Form.Group> */}
+					</Form.Group>
 
 					<Button onClick={this.updateUser} variant="primary" type="submit" id="salesSubmit">
 						Submit

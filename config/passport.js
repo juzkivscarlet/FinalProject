@@ -4,6 +4,7 @@ var db = require('../models');
 
 passport.use(new LocalStrategy(
 	{usernameField: "username"}, function(username,password,done) {
+
 		db.SalesUsers.findOne({
 			where: {
 				username: username
@@ -13,8 +14,24 @@ passport.use(new LocalStrategy(
 				return done(null, user);
 			}
 			else if(!user) {                
-				return done(null,false,{
-					message: "Incorrect username."
+				db.BusinessUsers.findOne({
+					where: {
+						username: username
+					}
+				}).then((user) => {
+					if(user && user.validPassword(password)){
+						return done(null, user);
+					}
+					else if(!user) {                
+						return done(null,false,{
+							message: "Incorrect username."
+						});
+					}
+					else if(!user.validPassword(password)) {
+						return done(null,false,{
+							message: "Incorrect password."
+						});
+					}
 				});
 			}
 			else if(!user.validPassword(password)) {
@@ -23,25 +40,8 @@ passport.use(new LocalStrategy(
 				});
 			}
 		});
-		db.BusinessUsers.findOne({
-				where: {
-					username: username
-				}
-			}).then((user) => {
-				if(user && user.validPassword(password)){
-					return done(null, user);
-				}
-				else if(!user) {                
-					return done(null,false,{
-						message: "Incorrect username."
-					});
-				}
-				else if(!user.validPassword(password)) {
-					return done(null,false,{
-						message: "Incorrect password."
-					});
-				}
-		});
+
+
 	}
 ));
 

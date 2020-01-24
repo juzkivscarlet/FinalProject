@@ -3,6 +3,7 @@ const passport = require('../config/passport');
 const express = require('express');
 const axios = require('axios');
 const router = express();
+const bcrypt = require('bcryptjs');
 // const apiRoutes = require('./apiRoutes');
 
 const db = require('../models');
@@ -97,15 +98,18 @@ router.post('/sales/login', passport.authenticate('local'), (req,res) => {
 });
 
 router.put('/sales/update', (req,res) => {
+
+	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null);
+
 	// console.log(req.body);
 	db.SalesUsers.update(
 		{firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		username: req.body.username,
 		email: req.body.email,
-		// password: req.body.password,
+		password: req.body.password,
 		},
-		{where: {id: req.body.id}}
+		{where: {id: req.user.id}}
 	).then(data => {
 		res.json({data:data});
 	}).catch(err => {
@@ -133,6 +137,25 @@ router.post('/business/login', passport.authenticate('local'), (req,res) => {
 		if(err) return console.log(err);
 		res.json(req.user);
 	});
+});
+
+router.put('/business/update', (req,res) => {
+
+	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null);
+
+    db.BusinessUsers.update({
+        businessName: req.body.businessName,
+        industry: req.body.industry,
+        username: req.body.username,
+        password: req.body.password
+    }, {where: {
+        id: req.user.id
+    }}).then(data => {
+        res.json({data: data});
+    }).catch(err => {
+        console.log(err);
+        res.status(401).json(err);
+    });
 });
 
 // logging out
