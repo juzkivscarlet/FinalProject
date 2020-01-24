@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		phoneNumber: {
-			type: DataTypes.INTEGER(10),
+			type: DataTypes.STRING,
 			allowNull: true
 		}
 	});

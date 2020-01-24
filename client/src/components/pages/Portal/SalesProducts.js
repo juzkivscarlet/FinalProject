@@ -10,13 +10,13 @@ class SalesProducts extends Component {
 	};
 
 	componentDidMount() {
-		API.searchProducts().then(data => {
-			for(let i=0; i<data.data.length; i++) {
-				let items = [...this.state.products];
-				items.push(data.data[i]);
-				this.setState({products: items});
-			}
-		});
+		// API.searchProducts().then(data => {
+		// 	for(let i=0; i<data.data.length; i++) {
+		// 		let items = [...this.state.products];
+		// 		items.push(data.data[i]);
+		// 		this.setState({products: items});
+		// 	}
+		// });
 	}
 
 	render() {

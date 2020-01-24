@@ -11,36 +11,41 @@ class Leads extends Component {
 
 	componentDidMount() {
 		API.getLeads().then(data => {
-			for(let i=0; i<data.data.length; i++) {
+			for(let i=0; i<data.data.data.length; i++) {
 				let items = [...this.state.leads];
-				items.push(data.data[i]);
+				items.push(data.data.data[i]);
 				this.setState({leads: items});
-			}
+            }
 		});
 	}
 
 	render() {
 		return (
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.leads.map((item, i) => {
-                        return (
-                            <tr key={i}>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                                <td>{item.phoneNumber}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </Table>
+            <div style={{maxHeight: "200px", overflowY: "scroll"}}>
+                <Table striped bordered hover >
+                    <thead>
+                        {/* <tr>
+                            <th style={{textAlign: "center", fontSize: "xx-large"}} colspan="3">Leads</th>
+                        </tr>  */}
+                        <tr style={{textAlign: "center"}}>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.leads.map((item, i) => {
+                            return (
+                                <tr key={i}>
+                                    <td>{item.name}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.phoneNumber}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </Table>
+            </div>
 		);
 	}
 }
