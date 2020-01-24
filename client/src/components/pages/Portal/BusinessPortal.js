@@ -7,6 +7,7 @@ import './style.css';
 import Header from '../../Header';
 import Approvals from './Approvals';
 import BusinessProducts from './BusinessProducts';
+import ChangeAccountInfoModal from '../../ChangeAccountInfoModal';
 
 import API from '../../../utils/API';
 
@@ -24,7 +25,6 @@ class BusinessAvatar extends Component {
 				businessName: data.data.businessName,
 				industry: data.data.industry
 			});
-			console.log(this.state);
 		});
 	}
 
@@ -57,10 +57,7 @@ class BusinessAvatar extends Component {
 					</Row>
 	
 					<div className='text-center'>
-						<Button variant='info'>
-							<FontAwesomeIcon icon={faUserEdit} />
-							Change account info
-						</Button>
+						<ChangeAccountInfoModal type='Business' />
 						<Button variant='info' onClick={this.logOut}>
 							<FontAwesomeIcon icon={faSignOutAlt} />
 							Log Out
