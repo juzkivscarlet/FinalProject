@@ -34,6 +34,9 @@ export default {
 	postProduct: function(data) {
 		return axios.post('/api/offerings', data);
 	},
+	deleteProduct: function(data) {
+		return axios.delete('/api/offerings', data);
+	},
 	getSales: function(data) {
 		return axios.get('/api/sales', data);
 	},

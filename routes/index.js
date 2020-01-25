@@ -171,6 +171,21 @@ router.post('/api/offerings', (req,res) => {
 	});
 });
 
+router.delete('/api/offerings', (req,res) => {
+	db.Offerings.destroy({
+		where: {
+			name: req.body.name,
+			description: req.body.description,
+			business: req.user.businessName
+		}
+	}).then(data => {
+		res.json({data: data});
+	}).catch(err => {
+		console.log(err);
+		res.status(401).json(err);
+	})
+});
+
 router.get('/api/sales', (req,res) => {
 	db.Sales.findAll({
 		where: {

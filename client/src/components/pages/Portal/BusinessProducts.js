@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import React, { Component, useState } from 'react';
+import { Button, Modal, Table } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
 
 import API from '../../../utils/API';
@@ -19,7 +21,7 @@ class BusinessProducts extends React.Component {
 				business: data.data.businessName
 			});
 		});
-		
+
 		API.searchProducts().then(data => {
 			for(let i=0; i<data.data.length; i++) {
 				if(data.data[i].business===this.state.business) {
@@ -45,18 +47,60 @@ class BusinessProducts extends React.Component {
 				<tbody>
 					{this.state.products.map((item, i) => {
 						return (
-							<tr key={i}>
-								<td>{item.name}</td>
-								<td>{item.description}</td>
-								<td>{item.priceRange}</td>
-								<td>{item.commissions}%</td>
-							</tr>
+							<Product item={item} mapKey={i} />
 						)
 					})}
 				</tbody>
 			</Table>
 		);
 	}
+}
+
+function Product(props) {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	const removeProduct = () => {
+		API.deleteProduct({
+			name: props.item.name,
+			description: props.item.description
+		}).then(res => {
+			window.location.reload();
+		}).catch(err => {
+			console.log(err);
+		});
+	};
+
+	return (
+		<>
+			<tr key={props.mapKey}>
+				<td>
+					<a role='button' onClick={handleShow}>
+						<FontAwesomeIcon icon={faTrashAlt} size='sm' />
+					</a>
+					{props.item.name}
+				</td>
+				<td>{props.item.description}</td>
+				<td>{props.item.priceRange}</td>
+				<td>{props.item.commissions}%</td>
+			</tr>
+
+			<Modal show={show} onHide={handleClose} centered>
+				<Modal.Header closeButton>
+					<Modal.Title>Are you sure?</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body>
+					<p>Are you sure you want to remove this item from your list of products?</p>
+					<h5>Remove <span className='font-italic'>{props.item.name}</span>? </h5>
+					<Button onClick={removeProduct} variant='danger' type='submit'>
+						Remove product
+					</Button>
+				</Modal.Body>
+			</Modal>
+		</>
+	);
 }
 
 export default BusinessProducts;
