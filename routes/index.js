@@ -19,14 +19,6 @@ router.get('localhost:3000/favicon.ico', (req,res) => {
 	res.status(204);
 });
 
-router.get('/api/sales', (req,res) => {
-	db.SalesUsers.findAll({}).then(data => {
-		res.json({data:data});
-	}).catch(err => {
-		res.status(401).json(err);
-	});
-});
-
 router.get('/api/business', (req,res) => {
 	db.BusinessUsers.findAll({}).then(data => {
 		res.json({data:data});
@@ -34,43 +26,6 @@ router.get('/api/business', (req,res) => {
 		res.status(401).json(err);
 	});
 });
-
-// Route for getting some data about our user to be used client side
-router.get('/api/sales/user_data', function (req, res) {
-	// console.log(req.user);
-	if (!req.user) {
-	  // The user is not logged in, send back an empty object
-	  res.json({});
-	} else {
-	  // Otherwise send back the user's email and id
-	  // Sending back a password, even a hashed password, isn't a good idea
-	//   console.log(req.user);
-	  res.json(req.user);
-	//   db.SalesUsers.findOne({
-	// 	where: {
-	// 	  username: req.user.username
-	// 	}
-	//   }).then(function (data) {
-	// 	res.json({
-	// 		username: data.data.username,
-	// 		lastName: data.data.lastName
-	// 	});
-	//   });
-	}
-  });
-
-// Route for getting some data about our user to be used client side
-router.get('/api/business/user_data', function (req, res) {
-	// console.log(req.user);
-	if (!req.user) {
-	  // The user is not logged in, send back an empty object
-	  res.json({});
-	} else {
-	  // Otherwise send back the user's email and id
-	  // Sending back a password, even a hashed password, isn't a good idea
-	  res.json(req.user);
-	}
-  });
 
 router.post('/sales/signup', (req, res) => {
 	db.SalesUsers.create({
@@ -158,6 +113,15 @@ router.put('/business/update', (req,res) => {
     });
 });
 
+router.get('/businessUsers', (req,res) => {
+	db.BusinessUsers.findAll({}).then(data => {
+		res.json(data);
+	}).catch(err => {
+		res.status(401).json(err);
+	});
+});
+
+
 // logging out
 router.get('/logout', (req,res) => {
 	req.logout();
@@ -194,7 +158,7 @@ router.post('/api/offerings', (req,res) => {
 router.get('/api/sales', (req,res) => {
 	db.Sales.findAll({
 		where: {
-			businessName: req.user.businessName
+			business: req.user.businessName
 		}
 	}).then(data => {
 		res.json({data: data});
@@ -204,10 +168,12 @@ router.get('/api/sales', (req,res) => {
 });
 
 router.post('/api/sales', (req,res) => {
+	console.log(req.body);
 	db.Sales.create({
-		salesRep: req.body.salesRep,
-		commission: req.body.commission,
-		approved: req.body.approved
+		salesRep: req.user.username,
+		commission: req.body.commissions,
+		approved: false,
+		businessName: req.body.business
 	}).then(data => {
 		res.json({data: data});
 	}).catch(err => {

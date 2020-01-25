@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 	let Sales = sequelize.define('Sales', {
-		offering: {
+		salesRep: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
@@ -8,8 +8,8 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.DECIMAL(2,2),
 			allowNull: false
 		}, 
-		salesRep:{
-			type: DataTypes.STRING,
+		approved:{
+			type: DataTypes.BOOLEAN,
 			allowNull: false
 		},
 		businessName:{

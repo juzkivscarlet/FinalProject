@@ -53,8 +53,8 @@ module.exports = function(sequelize, DataTypes) {
 	});
 	
 	BusinessUsers.associate = function(models) {
-		BusinessUsers.hasMany(models.Offerings);
-		BusinessUsers.hasMany(models.SalesUsers);
+		// BusinessUsers.hasMany(models.Offerings);
+		// BusinessUsers.hasMany(models.SalesUsers);
 		// BusinessUsers.hasMany(models.Sales);
 	};
 

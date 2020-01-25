@@ -1,10 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 	let Offerings = sequelize.define("Offerings", {
-		product: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		business: {
+		name: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
@@ -18,6 +14,10 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		commissions: {
 			type: DataTypes.FLOAT(2),
+			allowNull: false
+		},
+		business: {
+			type: DataTypes.STRING,
 			allowNull: false
 		}
 	});

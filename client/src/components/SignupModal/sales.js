@@ -36,7 +36,7 @@ class SalesForm extends Component {
 				username: res.data.data.username,
 				password: res.data.data.password
 			}).then(res => {
-				API.loggedInSales();
+				API.userInfo();
 				window.location.href = '/portal/sales';
 			}).catch(err => console.log(err));
 		})

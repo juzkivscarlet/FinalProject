@@ -36,10 +36,6 @@ class Modules extends Component {
 					<tbody>
 						{this.state.modules.map((item, i) => {
 							return (
-								// <tr key={i} onClick={() => this.loadModule(item)}>
-								// 	<td>{item.name}</td>
-								// 	<td>{item.time}</td>
-								// </tr>
 								<tr key={i} onClick={() => this.loadModule(item)}>
 								<td>{item.name}</td>
 								<td>{item.time}</td>

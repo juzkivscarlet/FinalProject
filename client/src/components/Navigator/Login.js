@@ -26,7 +26,7 @@ class Login extends Component {
 				username: this.state.username,
 				password: this.state.password
 			}).then(res => {
-				API.loggedInSales();
+				API.userInfo();
 				window.location.href = '/portal/sales';
 			}).catch(err => console.log(err));
 			
@@ -36,7 +36,7 @@ class Login extends Component {
 				username: this.state.username,
 				password: this.state.password
 			}).then(res => {
-				API.loggedInBusiness();
+				API.userInfo();
 				window.location.href = '/portal/business';
 			}).catch(err => console.log(err));
 

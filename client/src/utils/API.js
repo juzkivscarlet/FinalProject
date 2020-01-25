@@ -19,17 +19,12 @@ export default {
 	updateBusinessAccount: function(data) {
 		return axios.put('/business/update', data);	
 	},
-	loggedInSales: function(data) {
-		return axios.get('/api/sales/user_data');
+	searchBusinessUsers: function() {
+		return axios.get('/businessUsers')
 	},
-	loggedInBusiness: function(data) {
-		return axios.get('/api/business/user_data');
-	},
-
 	userInfo: function() {
 		return axios.get('/api/user');
 	},
-
 	searchProducts: function(data) {
 		return axios.get('/api/offerings');
 	},
