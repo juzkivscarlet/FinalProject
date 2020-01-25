@@ -24,9 +24,6 @@ class Leads extends Component {
             <div style={{maxHeight: "200px", overflowY: "scroll"}}>
                 <Table striped bordered hover >
                     <thead>
-                        {/* <tr>
-                            <th style={{textAlign: "center", fontSize: "xx-large"}} colspan="3">Leads</th>
-                        </tr>  */}
                         <tr style={{textAlign: "center"}}>
                             <th>Name</th>
                             <th>Email</th>
