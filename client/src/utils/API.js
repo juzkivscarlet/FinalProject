@@ -22,6 +22,9 @@ export default {
 	searchBusinessUsers: function() {
 		return axios.get('/businessUsers')
 	},
+	addUser: function() {
+		return axios.post('api/user');
+	},
 	userInfo: function() {
 		return axios.get('/api/user');
 	},

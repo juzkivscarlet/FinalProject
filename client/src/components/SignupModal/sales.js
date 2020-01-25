@@ -6,7 +6,7 @@ class SalesForm extends Component {
 	state = {
 		firstName: '',
 		lastName: '',
-		userName: '',
+		username: '',
 		email: '',
 		password: ''
 	};
@@ -26,17 +26,18 @@ class SalesForm extends Component {
 		API.signUpSales({
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
-			userName: this.state.userName,
+			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password
 		})
 		.then(res => {
 			console.log(res);
 			API.loginSales({
-				username: res.data.data.username,
-				password: res.data.data.password
+				username: this.state.username,
+				password: this.state.password
 			}).then(res => {
 				API.userInfo();
+				API.addUser();
 				window.location.href = '/portal/sales';
 			}).catch(err => console.log(err));
 		})
@@ -76,8 +77,8 @@ class SalesForm extends Component {
 						<Form.Control 
 							type="text" 
 							placeholder="Username"
-							name='userName'
-							value={this.state.userName}
+							name='username'
+							value={this.state.username}
 							onChange={this.handleInputChange} />
 					</Form.Group>
 

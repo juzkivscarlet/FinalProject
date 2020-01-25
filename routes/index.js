@@ -31,7 +31,7 @@ router.post('/sales/signup', (req, res) => {
 	db.SalesUsers.create({
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
-		username: req.body.userName,
+		username: req.body.username,
 		email: req.body.email,
 		password: req.body.password,
 	})
@@ -126,6 +126,18 @@ router.get('/businessUsers', (req,res) => {
 router.get('/logout', (req,res) => {
 	req.logout();
 	res.redirect("/");
+});
+
+router.post('/api/user', (req,res) => {
+	db.Users.create({
+		accountType: req.user.accountType,
+		username: req.user.username,
+	}).then(data => {
+		res.json({data:data});
+	}).catch(err => {
+		console.log(err);
+		res.status(401).json();
+	});
 });
 
 router.get('/api/user', (req,res) => {
