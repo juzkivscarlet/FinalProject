@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link, useHistory, Redirect, useLocation} from 'react-router-dom';
-import { Button, Dropdown, DropdownButton, Form, Nav } from 'react-bootstrap';
+import { Alert, Button, Dropdown, DropdownButton, Form, Nav } from 'react-bootstrap';
 import './style.css';
 import SignupModal from '../SignupModal';
 import API from '../../utils/API';
@@ -8,7 +8,8 @@ import API from '../../utils/API';
 class Login extends Component {
 	state = {
 		username: '',
-		password: ''
+		password: '',
+		shown: false,
 	};
 
 	handleInputChange = e => {
@@ -20,15 +21,18 @@ class Login extends Component {
 	
 	loginUser = (e) => {
 		e.preventDefault();
-		
+		this.setState({ shown: true});
 		if(this.props.type === 'Sales'){
 			API.loginSales({
 				username: this.state.username,
 				password: this.state.password
 			}).then(res => {
-				API.userInfo();
-				window.location.href = '/portal/sales';
-			}).catch(err => console.log(err));
+				if(res.data.incorrect !== "incorrect"){
+					API.userInfo();
+					window.location.href = '/portal/sales';
+				}
+				else console.log("Incorrect username or password");
+			}).catch(err => console.log("Incorrect username or password"));
 			
 		}
 		else{
@@ -36,9 +40,12 @@ class Login extends Component {
 				username: this.state.username,
 				password: this.state.password
 			}).then(res => {
-				API.userInfo();
-				window.location.href = '/portal/business';
-			}).catch(err => console.log(err));
+				if(res.data.incorrect !== "incorrect"){
+					API.userInfo();
+					window.location.href = '/portal/business';
+				}
+				else console.log("Incorrect username or password");
+			}).catch(err => console.log("Incorrect username or password"));
 
 		}
 	};
@@ -79,6 +86,10 @@ class Login extends Component {
 						<Button onClick={this.loginUser} variant='primary' type='submit'>
 							Login
 						</Button>
+
+						<Alert variant="warning">
+						{this.state.shown ? "Incorrect Username or Password" : ""}
+						</Alert>
 
 					</Form>
 

@@ -51,7 +51,13 @@ router.post('/sales/login', passport.authenticate('local'), (req,res) => {
 			if(err) return console.log(err);
 			res.json(req.user);
 		});
+<<<<<<< HEAD
 	} else res.json({incorrect:'incorrect'});
+=======
+	}
+	else
+		res.json({incorrect:"incorrect"});
+>>>>>>> 6ea9bd9af91a6fb62ecf4cfce6eef0e0387058ba
 });
 
 router.put('/sales/update', (req,res) => {
@@ -95,7 +101,13 @@ router.post('/business/login', passport.authenticate('local'), (req,res) => {
 			if(err) return console.log(err);
 			res.json(req.user);
 		});
+<<<<<<< HEAD
 	} else res.json({incorrect:'incorrect'});
+=======
+	}
+	else
+		res.json({incorrect:"incorrect"});
+>>>>>>> 6ea9bd9af91a6fb62ecf4cfce6eef0e0387058ba
 });
 
 router.put('/business/update', (req,res) => {
