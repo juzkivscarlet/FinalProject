@@ -52,6 +52,8 @@ router.post('/sales/login', passport.authenticate('local'), (req,res) => {
 			res.json(req.user);
 		});
 	}
+	else
+		res.json({incorrect:"incorrect"});
 });
 
 router.put('/sales/update', (req,res) => {
@@ -90,13 +92,14 @@ router.post('/business/signup', (req,res) => {
 });
 
 router.post('/business/login', passport.authenticate('local'), (req,res) => {
-
 	if(req.user.accountType == "Business"){
 		req.login(req.user, err => {
 			if(err) return console.log(err);
 			res.json(req.user);
 		});
 	}
+	else
+		res.json({incorrect:"incorrect"});
 });
 
 router.put('/business/update', (req,res) => {
