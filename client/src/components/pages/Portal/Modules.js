@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import React, { Component, useState } from 'react';
+import { Table, Modal, Form, Button} from 'react-bootstrap';
 import './style.css';
 
 import API from '../../../utils/API';
@@ -19,6 +19,10 @@ class Modules extends Component {
 		});
 	}
 
+	loadModule = item => {
+		console.log(item);
+	};
+
 	render() {
 		return (
 			<div style={{maxHeight: "200px", overflowY: "scroll"}}>
@@ -32,14 +36,42 @@ class Modules extends Component {
 					<tbody>
 						{this.state.modules.map((item, i) => {
 							return (
-								<tr key={i}>
-									<td>{item.name}</td>
-									<td>{item.time}</td>
+								// <tr key={i} onClick={() => this.loadModule(item)}>
+								// 	<td>{item.name}</td>
+								// 	<td>{item.time}</td>
+								// </tr>
+								<tr key={i} onClick={() => this.loadModule(item)}>
+								<td>{item.name}</td>
+								<td>{item.time}</td>
 								</tr>
 							)
 						})}
 					</tbody>
 				</Table>
+
+				{/* <Modal show={show} onHide={() => setShow(false)}>
+					<Modal.Header closeButton>
+						<Modal.Title>Change Account Info</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<Form>
+
+							<Form.Group id="salesFirstName">
+								<Form.Label>First Name</Form.Label>
+								<Form.Control 
+									type="text" 
+									placeholder="First Name" 
+									name='firstName'
+									value={this.state.firstName} 
+									onChange={this.handleInputChange} />
+							</Form.Group>
+
+							<Button onClick={this.updateUser} variant="primary" type="submit" id="moduleSubmit">
+								Submit
+							</Button>
+						</Form>
+					</Modal.Body>
+				</Modal> */}
 			</div>
 		);
 	}

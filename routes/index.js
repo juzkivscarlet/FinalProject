@@ -15,7 +15,7 @@ const db = require('../models');
 // });
 
 // fix favicon.ico search routing issue
-router.get('/favicon.ico', (req,res) => {
+router.get('localhost:3000/favicon.ico', (req,res) => {
 	res.status(204);
 });
 
