@@ -46,10 +46,12 @@ router.post('/sales/signup', (req, res) => {
 });
 
 router.post('/sales/login', passport.authenticate('local'), (req,res) => {
-	req.login(req.user, err => {
-		if(err) return console.log(err);
-		res.json(req.user);
-	});
+	if(req.user.accountType == "Sales"){
+		req.login(req.user, err => {
+			if(err) return console.log(err);
+			res.json(req.user);
+		});
+	}
 });
 
 router.put('/sales/update', (req,res) => {
@@ -88,10 +90,13 @@ router.post('/business/signup', (req,res) => {
 });
 
 router.post('/business/login', passport.authenticate('local'), (req,res) => {
-	req.login(req.user, err => {
-		if(err) return console.log(err);
-		res.json(req.user);
-	});
+
+	if(req.user.accountType == "Business"){
+		req.login(req.user, err => {
+			if(err) return console.log(err);
+			res.json(req.user);
+		});
+	}
 });
 
 router.put('/business/update', (req,res) => {
