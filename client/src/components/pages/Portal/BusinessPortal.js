@@ -5,6 +5,8 @@ import { faBriefcase, faIndustry, faPlusCircle, faSignOutAlt, faUserEdit } from 
 import './style.css';
 
 import Header from '../../Header';
+
+import AddProduct from './AddProduct';
 import Approvals from './Approvals';
 import BusinessProducts from './BusinessProducts';
 import ChangeAccountInfoModal from '../../ChangeAccountInfoModal';
@@ -93,22 +95,19 @@ class BusinessPortal extends Component {
 				<Container>
 					<BusinessAvatar />
 					<Row>
-						<h2 className='w-100 text-center'>Sales Approvals</h2>
+						<h2 className='w-100 text-center text-white'>Sales Approvals</h2>
 						<Approvals />
 					</Row>
 
 					<Row>
 						<Col md={4} />
 						<Col md={4}>
-							<h2 className='text-center'>
+							<h2 className='text-center text-white'>
 								Products
 							</h2>
 						</Col>
 						<Col md={4} className='text-right'>
-							<Button variant='info'>
-								<FontAwesomeIcon icon={faPlusCircle} size="lg" />
-								Add Product
-							</Button>
+							<AddProduct />
 						</Col>
 					</Row>
 					<Row>
