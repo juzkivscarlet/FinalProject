@@ -9,8 +9,8 @@ import SignupModal from '../SignupModal';
 import Wrapper from '../Wrapper';
 import Header from '../Header';
 
-import SalesPortal from '../pages/Portal';
-import BusinessPortal from '../pages/Portal';
+import SalesPortal from '../pages/Portal/SalesPortal';
+import BusinessPortal from '../pages/Portal/BusinessPortal';
 
 function Home() {
 	return (

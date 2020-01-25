@@ -11,7 +11,7 @@ import ChangeAccountInfoModal from '../../ChangeAccountInfoModal';
 
 import API from '../../../utils/API';
 
-class BusinessAvatar extends Component {
+class BusinessAvatar extends React.Component {
 	state = {
 		username: '',
 		businessName: '',
@@ -71,11 +71,19 @@ class BusinessAvatar extends Component {
 
 class BusinessPortal extends Component {
 	state = {
-
+		username: '',
+		businessName: '',
+		industry: ''
 	};
 
 	componentDidMount() {
-		
+		API.userInfo().then(data => {
+			this.setState({
+				username: data.data.username,
+				businessName: data.data.businessName,
+				industry: data.data.industry
+			});
+		});
 	}
 
 	render() {
@@ -104,7 +112,7 @@ class BusinessPortal extends Component {
 						</Col>
 					</Row>
 					<Row>
-						<BusinessProducts />
+						<BusinessProducts business={this.state.businessName} />
 					</Row>
 				</Container>
 			</div>

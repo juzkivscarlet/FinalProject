@@ -170,7 +170,7 @@ router.post('/api/offerings', (req,res) => {
 router.get('/api/sales', (req,res) => {
 	db.Sales.findAll({
 		where: {
-			business: req.user.businessName
+			// businessName: req.user.businessName
 		}
 	}).then(data => {
 		res.json({data: data});

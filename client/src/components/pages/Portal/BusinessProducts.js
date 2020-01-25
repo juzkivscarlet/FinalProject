@@ -4,17 +4,29 @@ import './style.css';
 
 import API from '../../../utils/API';
 
-class BusinessProducts extends Component {
-	state = {
-		products: []
-	};
+class BusinessProducts extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			products: [],
+			business: ''
+		};
+	}
 
 	componentDidMount() {
+		API.userInfo().then(data => {
+			this.setState({
+				business: data.data.businessName
+			});
+		});
+		
 		API.searchProducts().then(data => {
 			for(let i=0; i<data.data.length; i++) {
-				let items = [...this.state.products];
-				items.push(data.data[i]);
-				this.setState({products: items});
+				if(data.data[i].business===this.state.business) {
+					let items = [...this.state.products];
+					items.push(data.data[i]);
+					this.setState({products: items});
+				}
 			}
 		});
 	}
@@ -34,7 +46,7 @@ class BusinessProducts extends Component {
 					{this.state.products.map((item, i) => {
 						return (
 							<tr key={i}>
-								<td>{item.product}</td>
+								<td>{item.name}</td>
 								<td>{item.description}</td>
 								<td>{item.priceRange}</td>
 								<td>{item.commissions}%</td>
