@@ -51,7 +51,7 @@ router.post('/sales/login', passport.authenticate('local'), (req,res) => {
 			if(err) return console.log(err);
 			res.json(req.user);
 		});
-	}
+	} else res.json({incorrect:'incorrect'});
 });
 
 router.put('/sales/update', (req,res) => {
@@ -90,13 +90,12 @@ router.post('/business/signup', (req,res) => {
 });
 
 router.post('/business/login', passport.authenticate('local'), (req,res) => {
-
 	if(req.user.accountType == "Business"){
 		req.login(req.user, err => {
 			if(err) return console.log(err);
 			res.json(req.user);
 		});
-	}
+	} else res.json({incorrect:'incorrect'});
 });
 
 router.put('/business/update', (req,res) => {
@@ -159,11 +158,11 @@ router.get('/api/offerings', (req,res) => {
 
 router.post('/api/offerings', (req,res) => {
 	db.Offerings.create({
-		product: req.body.product,
+		name: req.body.name,
 		description: req.body.description,
 		priceRange: req.body.priceRange,
 		commissions: req.body.commissions,
-		business: req.body.business
+		business: req.user.businessName
 	}).then(data => {
 		res.json({data: data});
 	}).catch(err => {

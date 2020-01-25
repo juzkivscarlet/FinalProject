@@ -57,7 +57,7 @@ class BusinessAvatar extends React.Component {
 
 						</ListGroup>
 					</Row>
-	
+
 					<div className='text-center'>
 						<ChangeAccountInfoModal type='Business' />
 						<Button variant='info' onClick={this.logOut}>
@@ -65,6 +65,7 @@ class BusinessAvatar extends React.Component {
 							Log Out
 						</Button>
 					</div>
+
 				</Card.Body>
 			</Card>
 		);
