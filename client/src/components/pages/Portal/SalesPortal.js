@@ -102,15 +102,15 @@ class SalesPortal extends Component {
 					<SalesAvatar />
 					<Row>
 						<Col>
-							<h2 className='text-center'>Modules</h2>
+							<h2 className='text-center text-white'>Modules</h2>
 							<Modules />
 						</Col>
 						<Col>
-							<h2 className='text-center'>Leads</h2>
+							<h2 className='text-center text-white'>Leads</h2>
 							<Leads />
 						</Col>
 					</Row>
-					<h2 className='text-center'>Products</h2>
+					<h2 className='text-center text-white'>Products</h2>
 					<SalesProducts />
 				</Container>
 			</div>
