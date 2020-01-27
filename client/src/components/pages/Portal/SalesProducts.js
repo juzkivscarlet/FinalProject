@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import { Table, Button, Form} from 'react-bootstrap';
+import React, { Component, useState } from 'react';
+import { Button, Form, Modal, Table} from 'react-bootstrap';
 import './style.css';
 
 import API from '../../../utils/API';
 
-class SalesProducts extends Component {
-	state = {
-		products: [],
-		businesses: []
-	};
+class SalesProducts extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			products: [],
+			businesses: []
+		};
+	}
 
 	componentDidMount() {
 		API.searchProducts().then(data => {
@@ -33,10 +36,6 @@ class SalesProducts extends Component {
 		this.setState({
 			[name]: value
 		});
-	};
-
-	sale = item => {
-		API.postSale(item);
 	};
 
 	render() {
@@ -73,13 +72,7 @@ class SalesProducts extends Component {
 					<tbody>
 						{this.state.products.filter(item => item.business == document.getElementById("businessName").options[document.getElementById("businessName").selectedIndex].text).map((item, i) => {
 							return (
-								<tr key={i} onClick={() => this.sale(item)}>
-									<td>{item.name}</td>
-									<td>{item.description}</td>
-									<td>{item.priceRange}</td>
-									<td>{item.commissions}%</td>
-									<td>{item.business}</td>
-								</tr>
+								<Product item={item} mapKey={i} />
 							)
 						})}
 					</tbody>
@@ -89,4 +82,38 @@ class SalesProducts extends Component {
 	}
 }
 
+function Product(props) {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	const sale = item => {
+		API.postSale(item);
+	};
+
+	return (
+		<>
+			<tr key={props.mapKey} onClick={handleShow}>
+				<td>{props.item.name}</td>
+				<td>{props.item.description}</td>
+				<td>{props.item.priceRange}</td>
+				<td>{props.item.commissions}%</td>
+				<td>{props.item.business}</td>
+			</tr>
+
+			<Modal show={show} onHide={handleClose} centered>
+				<Modal.Header closeButton>
+					<Modal.Title>Did you sell this product/service?</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body>
+					<h5>Sold <span className='font-italic'>{props.item.name}</span>? </h5>
+					<Button onClick={() => sale(props.item)} variant='danger' type='submit'>
+						Pending Approval
+					</Button>
+				</Modal.Body>
+			</Modal>
+		</>
+	);
+}
 export default SalesProducts;
