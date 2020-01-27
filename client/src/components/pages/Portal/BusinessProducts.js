@@ -61,10 +61,10 @@ function Product(props) {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const removeProduct = () => {
+	const removeProduct = (item) => {
 		API.deleteProduct({
-			name: props.item.name,
-			description: props.item.description
+			name: item.name,
+			description: item.description
 		}).then(res => {
 			window.location.reload();
 		}).catch(err => {
@@ -94,7 +94,7 @@ function Product(props) {
 				<Modal.Body>
 					<p>Are you sure you want to remove this item from your list of products?</p>
 					<h5>Remove <span className='font-italic'>{props.item.name}</span>? </h5>
-					<Button onClick={removeProduct} variant='danger' type='submit'>
+					<Button onClick={() => removeProduct(props.item)} variant='danger' type='submit'>
 						Remove product
 					</Button>
 				</Modal.Body>
