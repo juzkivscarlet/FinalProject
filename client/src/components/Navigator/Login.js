@@ -21,7 +21,6 @@ class Login extends Component {
 	
 	loginUser = (e) => {
 		e.preventDefault();
-		this.setState({ shown: true});
 		if(this.props.type === 'Sales'){
 			API.loginSales({
 				username: this.state.username,
@@ -31,8 +30,9 @@ class Login extends Component {
 					API.userInfo();
 					window.location.href = '/portal/sales';
 				}
-				else console.log("Incorrect username or password");
-			}).catch(err => console.log("Incorrect username or password"));
+				else this.setState({ shown: true});
+				// console.log("Incorrect username or password");
+			}).catch(err => this.setState({ shown: true}));
 			
 		}
 		else{
@@ -44,8 +44,9 @@ class Login extends Component {
 					API.userInfo();
 					window.location.href = '/portal/business';
 				}
-				else console.log("Incorrect username or password");
-			}).catch(err => console.log("Incorrect username or password"));
+				else this.setState({ shown: true});
+				// console.log("Incorrect username or password");
+			}).catch(err => this.setState({ shown: true}));
 
 		}
 	};
@@ -86,10 +87,16 @@ class Login extends Component {
 						<Button onClick={this.loginUser} variant='primary' type='submit'>
 							Login
 						</Button>
-
-						<Alert variant="warning">
-						{this.state.shown ? "Incorrect Username or Password" : ""}
-						</Alert>
+						
+						<div>
+							<br></br>
+							{this.state.shown ? 
+							<Alert variant="warning">
+							"Incorrect Username or Password"
+							</Alert>
+							: ""}
+						</div>
+						
 
 					</Form>
 
