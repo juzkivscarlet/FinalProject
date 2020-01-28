@@ -189,7 +189,7 @@ router.delete('/api/offerings', (req,res) => {
 router.get('/api/sales', (req,res) => {
 	db.Sales.findAll({
 		where: {
-			// businessName: req.user.businessName
+			businessName: req.user.businessName
 		}
 	}).then(data => {
 		res.json({data: data});

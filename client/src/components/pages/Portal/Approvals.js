@@ -11,9 +11,9 @@ class Approvals extends Component {
 
 	componentDidMount() {
 		API.getSales().then(data => {
-			for(let i=0; i<data.data.length; i++) {
+			for(let i=0; i<data.data.data.length; i++) {
 				let items = [...this.state.sales];
-				items.push(data.data[i]);
+				items.push(data.data.data[i]);
 				this.setState({sales: items});
 			}
 		});
@@ -25,7 +25,7 @@ class Approvals extends Component {
 				<thead>
 					<tr>
 						<th>Sales Rep</th>
-						<th>Asset/Product</th>
+						{/* <th>Asset/Product</th> */}
 						<th>Commission</th>
 					</tr>
 				</thead>
@@ -34,7 +34,7 @@ class Approvals extends Component {
 						return (
 							<tr key={i}>
 								<td>{item.salesRep}</td>
-								<td>{item.offering}</td>
+								{/* <td>{item.offering}</td> */}
 								<td>{item.commission}</td>
 							</tr>
 						)
