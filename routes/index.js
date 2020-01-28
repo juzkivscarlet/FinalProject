@@ -10,12 +10,12 @@ const db = require('../models');
 
 // router.use('/api', apiRoutes);
 
-// router.use((req,res) => {
-// 	res.sendFile(path.join(__dirname,'../client/build/index.html'));
-// });
+router.use((req,res) => {
+	res.sendFile(path.join(__dirname,'../client/build/index.html'));
+});
 
 // fix favicon.ico search routing issue
-router.get('localhost:3000/favicon.ico', (req,res) => {
+router.get('/favicon.ico', (req,res) => {
 	res.status(204);
 });
 
