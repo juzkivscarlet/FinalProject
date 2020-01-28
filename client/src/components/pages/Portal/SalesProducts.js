@@ -4,7 +4,7 @@ import './style.css';
 
 import API from '../../../utils/API';
 
-class SalesProducts extends React.Component {
+class SalesProducts extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -70,7 +70,7 @@ class SalesProducts extends React.Component {
 						</tr>
 					</thead>
 					<tbody>
-						{this.state.products.filter(item => item.business == document.getElementById("businessName").options[document.getElementById("businessName").selectedIndex].text).map((item, i) => {
+						{this.state.products.filter(item => item.business === document.getElementById("businessName").options[document.getElementById("businessName").selectedIndex].text).map((item, i) => {
 							return (
 								<Product item={item} mapKey={i} />
 							)

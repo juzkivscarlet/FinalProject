@@ -6,7 +6,7 @@ import './style.css';
 
 import API from '../../../utils/API';
 
-class BusinessProducts extends React.Component {
+class BusinessProducts extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

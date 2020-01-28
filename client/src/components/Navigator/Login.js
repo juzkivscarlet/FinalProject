@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Link, useHistory, Redirect, useLocation} from 'react-router-dom';
-import { Alert, Button, Dropdown, DropdownButton, Form, Nav } from 'react-bootstrap';
+import { Alert, Button, Dropdown, Form } from 'react-bootstrap';
 import './style.css';
 import SignupModal from '../SignupModal';
 import API from '../../utils/API';

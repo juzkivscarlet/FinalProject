@@ -97,7 +97,8 @@ class SalesPortal extends Component {
 
 	render() {
 		return (
-			<div>
+			<>
+				<Header />
 				<Container>
 					<SalesAvatar />
 					<Row>
@@ -113,7 +114,7 @@ class SalesPortal extends Component {
 					<h2 className='text-center text-white'>Products</h2>
 					<SalesProducts />
 				</Container>
-			</div>
+			</>
 		);
 	}
 }

@@ -91,7 +91,7 @@ class BusinessPortal extends Component {
 
 	render() {
 		return (
-			<div>
+			<>
 				<Header />
 				<Container>
 					<BusinessAvatar />
@@ -115,7 +115,7 @@ class BusinessPortal extends Component {
 						<BusinessProducts business={this.state.businessName} />
 					</Row>
 				</Container>
-			</div>
+			</>
 		);
 	}
 }
