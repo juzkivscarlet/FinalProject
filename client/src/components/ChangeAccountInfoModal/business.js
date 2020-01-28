@@ -38,7 +38,11 @@ class BusinessAcctInfo extends Component {
 			username: this.state.username,
 			password: this.state.password
 		}).then(res => {
-			window.location.reload(false);
+			API.logOut()
+			.then(API.loginBusiness({
+				username: this.state.username,
+				password: this.state.password
+			}).then(window.location.reload(false)));
 		}).catch(err => {
 			console.log(err);
 		});

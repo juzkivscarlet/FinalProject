@@ -46,7 +46,12 @@ class AccountInfo extends Component {
 			password: this.state.password
 		})
 		.then(res => {
-            window.location.reload(false);
+			API.logOut()
+			.then(API.loginSales({
+				username: this.state.username,
+				password: this.state.password
+			}).then(window.location.reload(false)));
+            // window.location.reload(false);
             // console.log(res);
 		})
 		.catch(err => {

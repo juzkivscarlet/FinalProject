@@ -73,7 +73,7 @@ class SalesAvatar extends Component {
 	
 					<Col md={{ span: 6, offset: 4 }}className='text-center'>
 						<Row>
-							<ChangeAccountInfoModal type={this.props.type} />
+							<ChangeAccountInfoModal type={this.props.type}/>
 							<Button variant='info' onClick={this.logOut}>
 								<FontAwesomeIcon icon={faSignOutAlt} />
 								Log Out
