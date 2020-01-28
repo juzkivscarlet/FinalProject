@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		commission: {
-			type: DataTypes.DECIMAL(2,2),
+			type: DataTypes.STRING,
 			allowNull: false
 		}, 
 		approved:{

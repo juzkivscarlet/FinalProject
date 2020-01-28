@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false
 		},
 		commissions: {
-			type: DataTypes.FLOAT(2),
+			type: DataTypes.STRING,
 			allowNull: false
 		},
 		business: {

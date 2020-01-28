@@ -88,6 +88,7 @@ function Product(props) {
 	const handleShow = () => setShow(true);
 
 	const sale = item => {
+		console.log(typeof item.commissions)
 		API.postSale(item);
 	};
 
@@ -108,7 +109,7 @@ function Product(props) {
 
 				<Modal.Body>
 					<h5>Sold <span className='font-italic'>{props.item.name}</span>? </h5>
-					<Button onClick={() => sale(props.item)} variant='danger' type='submit'>
+					<Button onClick={() => {sale(props.item); setShow(false)}} variant='danger' type='submit'>
 						Pending Approval
 					</Button>
 				</Modal.Body>
