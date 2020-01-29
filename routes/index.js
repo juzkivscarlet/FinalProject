@@ -7,11 +7,6 @@ const bcrypt = require('bcryptjs');
 
 const db = require('../models');
 
-// fix favicon.ico search routing issue
-router.get('/favicon.ico', (req,res) => {
-	res.status(204);
-});
-
 router.get('/api/business', (req,res) => {
 	db.BusinessUsers.findAll({}).then(data => {
 		res.json({data:data});
