@@ -2,7 +2,7 @@
 	"name": "final-project",
 	"version": "1.0.0",
 	"description": "",
-	"homepage": "https://matts-sellout.herokuapp.com/",
+	"homepage": "http://matts-sellout.herokuapp.com/",
 	"main": "server.js",
 	"scripts": {
 		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
