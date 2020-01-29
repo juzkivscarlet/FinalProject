@@ -4,15 +4,8 @@ const express = require('express');
 const axios = require('axios');
 const router = express();
 const bcrypt = require('bcryptjs');
-// const apiRoutes = require('./apiRoutes');
 
 const db = require('../models');
-
-// router.use('/api', apiRoutes);
-
-router.use((req,res) => {
-	res.sendFile(path.join(__dirname,'../client/build/index.html'));
-});
 
 // fix favicon.ico search routing issue
 router.get('/favicon.ico', (req,res) => {
@@ -241,6 +234,10 @@ router.get('/api/modules', (req,res) => {
 	}).catch(err => {
 		res.status(401).json(err);
 	});
+});
+
+router.use((req,res) => {
+	res.sendFile(path.join(__dirname,'../client/build/index.html'));
 });
 
 module.exports = router;
