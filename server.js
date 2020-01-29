@@ -10,7 +10,6 @@ const routes = require('./routes');
 require('dotenv');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -22,7 +21,8 @@ app.use(routes);
 if(process.env.NODE_ENV==='production') app.use(express.static('client/build'));
 
 db.sequelize.sync().then(() => {
-	app.listen(PORT, () => {
+	app.set('port', (process.env.PORT || 5000));
+	app.listen(app.get('port'), () => {
 		console.log(`Live on localhost:${PORT}`);
 	});
 });
