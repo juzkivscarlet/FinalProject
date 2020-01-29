@@ -21,8 +21,7 @@ app.use(routes);
 if(process.env.NODE_ENV==='production') app.use(express.static('client/build'));
 
 db.sequelize.sync().then(() => {
-	const port = process.env.PORT || 5000;
-	app.listen(port, '0.0.0.0', () => {
+	app.listen(process.env.PORT || 5000, () => {
 		console.log(`Live on localhost:${PORT}`);
 	});
 });
